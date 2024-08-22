@@ -10,6 +10,9 @@ LIBS	:= $(MLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
 SRCS	:= ./src/main.c \
 			./src/check_args.c \
 			./src/map_check.c \
+			./src/cub3d.c \
+			./src/draw_minimap.c \
+			./src/movements.c \
 			./src/parse/parse.c \
 			./src/parse/parse_assets.c \
 			./src/parse/parse_color.c \
@@ -35,7 +38,9 @@ SRCS	:= ./src/main.c \
 			./src/utils/p_malloc.c \
 			./src/utils/put_err.c \
 			./src/utils/put_mlxerr.c \
-			./src/utils/put_syserr.c
+			./src/utils/put_syserr.c \
+			./src/raycast/draw.c \
+			./src/raycast/raycasting.c
 OBJS	:= ${SRCS:%.c=%.o}
 
 # Colors
