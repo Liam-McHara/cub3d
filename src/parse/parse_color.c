@@ -8,9 +8,9 @@
 // If it has already been set, prints an error message and exits gracefully.
 static void	set_color(t_assets *a, t_color *color, t_color_type type)
 {
-	static bool ceiling_set = false;
-	static bool floor_set = false;
-	
+	static bool	ceiling_set = false;
+	static bool	floor_set = false;
+
 	if (type == C_CEILING)
 	{
 		if (ceiling_set)
@@ -18,14 +18,13 @@ static void	set_color(t_assets *a, t_color *color, t_color_type type)
 		a->c = (int) color->rgba;
 		ceiling_set = true;
 	}
-	if (type == C_FLOOR)
+	else if (type == C_FLOOR)
 	{
 		if (floor_set)
 			exit(put_err(ERRMSG_MULTIDEFINE));
 		a->f = (int) color->rgba;
 		floor_set = true;
 	}
-
 }
 
 // Checks if 'str' follows the color setting syntax ("number,number,number").

@@ -4,6 +4,14 @@
 # include "coord.h"				// t_coord_d
 # include <stdbool.h>			// bool
 
+typedef enum e_direction
+{
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST
+}	t_direction;
+
 enum
 {
 	WALL = '1',

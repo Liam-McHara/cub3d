@@ -9,8 +9,8 @@
 // If it has already been set, prints a message and exits gracefully.
 static void	set_north_texture(t_assets *a, mlx_texture_t *texture)
 {
-	static bool north_set = false;
-	
+	static bool	north_set = false;
+
 	if (north_set)
 		exit(put_err(ERRMSG_MULTIDEFINE));
 	a->n = texture;
@@ -21,8 +21,8 @@ static void	set_north_texture(t_assets *a, mlx_texture_t *texture)
 // If it has already been set, prints a message and exits gracefully.
 static void	set_south_texture(t_assets *a, mlx_texture_t *texture)
 {
-	static bool south_set = false;
-	
+	static bool	south_set = false;
+
 	if (south_set)
 		exit(put_err(ERRMSG_MULTIDEFINE));
 	a->s = texture;
@@ -34,7 +34,7 @@ static void	set_south_texture(t_assets *a, mlx_texture_t *texture)
 static void	set_east_texture(t_assets *a, mlx_texture_t *texture)
 {
 	static bool	east_set = false;
-	
+
 	if (east_set)
 		exit(put_err(ERRMSG_MULTIDEFINE));
 	a->e = texture;
@@ -45,8 +45,8 @@ static void	set_east_texture(t_assets *a, mlx_texture_t *texture)
 // If it has already been set, prints a message and exits gracefully.
 static void	set_west_texture(t_assets *a, mlx_texture_t *texture)
 {
-	static bool west_set = false;
-	
+	static bool	west_set = false;
+
 	if (west_set)
 		exit(put_err(ERRMSG_MULTIDEFINE));
 	a->w = texture;
@@ -55,7 +55,7 @@ static void	set_west_texture(t_assets *a, mlx_texture_t *texture)
 
 // Parses 'str' and sets the texture specified by 'texture_type'.
 // In case of error, prints a message and exits gracefully.
-void	parse_texture(t_assets *a, const char *str, t_texture_type type)
+void	parse_texture(t_assets *a, const char *str, t_direction dir)
 {
 	char			*texture_path;
 	mlx_texture_t	*texture;
@@ -65,13 +65,12 @@ void	parse_texture(t_assets *a, const char *str, t_texture_type type)
 	if (!texture)
 		exit(put_mlxerr(texture_path));
 	free(texture_path);
-	if (type == T_NORTH)
+	if (dir == NORTH)
 		set_north_texture(a, texture);
-	else if (type == T_SOUTH)
+	else if (dir == SOUTH)
 		set_south_texture(a, texture);
-	else if (type == T_EAST)
+	else if (dir == EAST)
 		set_east_texture(a, texture);
-	else if (type == T_WEST)
+	else if (dir == WEST)
 		set_west_texture(a, texture);
-
 }
