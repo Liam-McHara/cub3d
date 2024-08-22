@@ -15,15 +15,14 @@ static void	set_player(t_player *player, int x, int y, char dir)
 	set_flag = true;
 	player->pos.x = x;
 	player->pos.y = y;
-	// TODO: Set player direction.
 	if (dir == 'N')
-		return ;
+		player->dir = (t_coord_d) {.x = 0, .y = -1};
 	else if (dir == 'S')
-		return ;
+		player->dir = (t_coord_d) {.x = 0, .y = 1};
 	else if (dir == 'E')
-		return ;
+		player->dir = (t_coord_d) {.x = 1, .y = 0};
 	else if (dir == 'W')
-		return ;
+		player->dir = (t_coord_d) {.x = -1, .y = 0};
 }
 
 // Parses 'line' as if part of the map, handling leading empty lines and
