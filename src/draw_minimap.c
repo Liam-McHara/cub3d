@@ -1,5 +1,4 @@
-#include "map.h"
-#include "cub3d.h"
+#include "minimap.h"
 
 void	mini_draw(t_cub *c, int x, int y, int color)
 {

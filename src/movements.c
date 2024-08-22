@@ -1,8 +1,5 @@
 #include "cub3d.h"
-#include "player.h"
-#include "assets.h"
-#include "map.h"
-#include <math.h>
+#include "movements"
 
 static void	vector_rotate(t_matrix *rotation, t_coord_d *vector)
 {
