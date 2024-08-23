@@ -1,7 +1,7 @@
 #ifndef MAP_H
 # define MAP_H
 
-# include "coord.h"				// t_coord_d
+# include "vec2.h"				// t_vec2_d
 # include <stdbool.h>			// bool
 
 typedef enum e_direction
@@ -26,7 +26,7 @@ typedef struct s_map
 	char	**data;
 }	t_map;
 
-char	map_check(t_map *m, t_coord_d *coord);
-bool	map_is_closed(t_map *m, t_coord_d *coord);
+char	map_check(t_map *m, t_vec2_d *pos);
+bool	map_is_closed(t_map *m, t_vec2_d *pos);
 
 #endif

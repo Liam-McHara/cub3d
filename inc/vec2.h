@@ -1,16 +1,16 @@
 #ifndef COORD_H
 # define COORD_H
 
-typedef struct s_coord_i
+typedef struct s_vec2_i
 {
 	int	x;
 	int	y;
-}	t_coord_i;
+}	t_vec2_i;
 
-typedef struct s_coord_d
+typedef struct s_vec2_d
 {
 	double	x;
 	double	y;
-}	t_coord_d;
+}	t_vec2_d;
 
 #endif

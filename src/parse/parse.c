@@ -11,7 +11,7 @@ static int	open_cubfile(const char *cubfile)
 	int	fd;
 
 	fd = open(cubfile, O_RDONLY);
-	if (!fd)
+	if (fd == -1)
 		exit(put_syserr("Couldn't open map file"));
 	return (fd);
 }
@@ -24,15 +24,6 @@ static void	init_mlx(mlx_t *mlx)
 		exit(put_err(ERRMSG_MLX_INIT));
 }
 
-// Initializes the values of 'assets'
-static void	init_assets(t_assets *assets)
-{
-	assets->n = NULL;
-	assets->s = NULL;
-	assets->e = NULL;
-	assets->w = NULL;
-}
-
 // Loads the .cub file and parses its content, leaving the t_cub object
 // ready-to-use.
 // If any error is found, prints an error message and exits gracefully.
@@ -41,8 +32,7 @@ void	parse(const char *cubfile, t_cub *cub)
 	int		fd;
 
 	fd = open_cubfile(cubfile);
-	init_mlx(&cub->mlx);
-	init_assets(&cub->assets);
 	parse_assets(&cub->assets, fd);
 	parse_map(&cub->map, &cub->player, fd);
+	init_mlx(&cub->mlx);
 }

@@ -13,16 +13,16 @@ static void	set_player(t_player *player, int x, int y, char dir)
 	if (set_flag)
 		exit(put_err(ERRMSG_MULTIPLAYER));
 	set_flag = true;
-	player->pos.x = x;
-	player->pos.y = y;
+	player->pos.x = x + 0.5f;
+	player->pos.y = y + 0.5f;
 	if (dir == 'N')
-		player->dir = (t_coord_d) {.x = 0, .y = -1};
+		player->dir = (t_vec2_d) {.x = 0, .y = -1};
 	else if (dir == 'S')
-		player->dir = (t_coord_d) {.x = 0, .y = 1};
+		player->dir = (t_vec2_d) {.x = 0, .y = 1};
 	else if (dir == 'E')
-		player->dir = (t_coord_d) {.x = 1, .y = 0};
+		player->dir = (t_vec2_d) {.x = 1, .y = 0};
 	else if (dir == 'W')
-		player->dir = (t_coord_d) {.x = -1, .y = 0};
+		player->dir = (t_vec2_d) {.x = -1, .y = 0};
 }
 
 // Parses 'line' as if part of the map, handling leading empty lines and
