@@ -23,12 +23,12 @@ void	draw_mmap(t_cub *c)
 	int		color;
 
 	y = 0;
-	while(c->map.matrix[y])
+	while(c->map.data[y])
 	{
 		x = 0;
-		while(c->map.matrix[y][x])
+		while(c->map.data[y][x])
 		{
-			if (c->map.matrix[y][x] == '1')
+			if (c->map.data[y][x] == '1')
 				color = 0xFFFFFF;
 			else
 				color = 0x000000;

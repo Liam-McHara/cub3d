@@ -1,7 +1,7 @@
 #include "cub3d.h"
-#include "movements"
+#include "movements.h"
 
-static void	vector_rotate(t_matrix *rotation, t_coord_d *vector)
+static void	vector_rotate(t_vec_rot *rotation, t_coord_d *vector)
 {
 	double	vector_x;
 
@@ -12,7 +12,7 @@ static void	vector_rotate(t_matrix *rotation, t_coord_d *vector)
 
 void	rot_player(t_player *player, double angle)
 {
-	t_matrix	rotation;
+	t_vec_rot	rotation;
 
 	rotation.a = cos(ROTATION_SPEED * angle);
 	rotation.b = sin(ROTATION_SPEED * angle);
@@ -37,7 +37,6 @@ static void	check_collisions(t_player *player, double new_pos_x,
 
 void	upd_player_pos(t_player *player, int key, char **map)
 {
-	printf("x:: %f    y:: %f\n", player->pos.x, player->pos.y);
 	if (key == MLX_KEY_W)
 		check_collisions(player,
 			player->pos.x + player->dir.x * PLAYER_SPEED,

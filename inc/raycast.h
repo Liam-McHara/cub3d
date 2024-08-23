@@ -22,6 +22,6 @@ typedef struct s_raycast
 	int			line_end;
 }	t_raycast;
 
-//void    raycast_position(t_cub *c);
+void    raycast_position(t_cub *c);
 
 #endif
