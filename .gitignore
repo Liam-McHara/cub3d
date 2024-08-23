@@ -8,6 +8,8 @@ MLX42
 *.swo
 TODO
 NOTES
+makefile
+/main.c
 
 # Prerequisites
 *.d
