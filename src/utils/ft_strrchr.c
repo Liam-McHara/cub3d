@@ -1,7 +1,7 @@
 #include "utils.h"			// ft_strlen
 
 // Returns a pointer to the last occurrence of 'c' in the string 's'.
-char	*strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 

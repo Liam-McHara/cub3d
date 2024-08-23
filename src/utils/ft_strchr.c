@@ -1,7 +1,7 @@
 #include <unistd.h>				// NULL
 
 // Returns a pointer to the first occurrence of 'c' in the string 's'.
-char	*strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{

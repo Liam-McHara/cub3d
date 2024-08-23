@@ -1,6 +1,6 @@
+#include "utils.h"				// ft_strtrim, ft_strchr, ft_atoi, put_err ...
 #include "parse_private.h"		// CEILING_C, FLOOR_C
 #include "assets.h"				// t_assets
-#include "utils.h"				// ft_strtrim, ft_strchr, ft_atoi, put_err ...
 #include <stdlib.h>				// free
 #include "color.h"				// t_color
 

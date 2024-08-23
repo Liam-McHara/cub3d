@@ -10,6 +10,7 @@ LIBS	:= $(MLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
 SRCS	:= ./src/main.c \
 			./src/check_args.c \
 			./src/map_check.c \
+			./src/map_is_closed.c \
 			./src/cub3d.c \
 			./src/draw_minimap.c \
 			./src/movements.c \
@@ -24,6 +25,7 @@ SRCS	:= ./src/main.c \
 			./src/utils/ft_isspace.c \
 			./src/utils/ft_memcpy.c \
 			./src/utils/ft_putendl_fd.c \
+			./src/utils/ft_putstr_fd.c \
 			./src/utils/ft_strchr.c \
 			./src/utils/ft_strjoin_free.c \
 			./src/utils/ft_strlcat.c \
@@ -35,6 +37,7 @@ SRCS	:= ./src/main.c \
 			./src/utils/ft_strtrim.c \
 			./src/utils/ft_substr.c \
 			./src/utils/get_next_line.c \
+			./src/utils/isinset.c \
 			./src/utils/p_malloc.c \
 			./src/utils/put_err.c \
 			./src/utils/put_mlxerr.c \

@@ -1,6 +1,6 @@
+#include "utils.h"			// isinset, put_err, ft_strtrim, get_next_line ...
 #include "cub3d.h"
 #include "map.h"
-#include "utils.h"
 #include <stdbool.h>		// true, false
 #include <unistd.h>			// close
 
