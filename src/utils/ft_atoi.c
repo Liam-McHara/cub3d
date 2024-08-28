@@ -10,7 +10,7 @@ int	ft_atoi(const char *str)
 		return (0);
 	n = 0;
 	sign = 1;
-	while (ft_isspace(*str))
+	while (*str && ft_isspace(*str))
 		++str;
 	while (*str && (*str == '-' || *str == '+'))
 	{
@@ -22,6 +22,7 @@ int	ft_atoi(const char *str)
 	{
 		n *= 10;
 		n += *str - '0';
+		++str;
 	}
 	return (n * sign);
 }
