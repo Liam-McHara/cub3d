@@ -9,17 +9,19 @@
 # define WIDTH 720
 # define HEIGHT 720
 # define MAX_MAP_SIZE 1024
+# define SCREEN_WIDTH 1024
+# define SCREEN_HEIGHT 510
 
 typedef struct s_cub
 {
 	t_player	player;
 	t_map		map;
 	t_assets	assets;
-	mlx_t		mlx;
-	mlx_image_t	img;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
 }	t_cub;
 
 char	*check_args(int ac, char **av);
-void	cub3d(t_cub *c);
+int		cub3d(t_cub *c);
 
 #endif
