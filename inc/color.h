@@ -14,5 +14,3 @@ typedef union u_color
 }	t_color;
 
 #endif
-
-//test
