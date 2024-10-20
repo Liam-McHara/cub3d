@@ -5,15 +5,15 @@
 char	*ft_strtrim(char const *s1, const char *set)
 {
 	char	*s2;
-	int		i;
+	int		len;
 
 	while (*s1 && isinset(*s1, set))
 		++s1;
-	i = ft_strlen(s1) - 1;
-	while (s1[i] && isinset(s1[i], set))
-		--i;
-	s2 = (char *) p_malloc((i + 2) * sizeof(char));
-	ft_memcpy(s2, s1, i + 1);
-	s2[i + 1] = '\0';
+	len = ft_strlen(s1);
+	while (len > 0 && isinset(s1[len - 1], set))
+		--len;
+	s2 = (char *) p_malloc((len + 1) * sizeof(char));
+	ft_memcpy(s2, s1, len + 1);
+	s2[len] = '\0';
 	return (s2);
 }
