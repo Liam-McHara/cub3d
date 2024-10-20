@@ -17,7 +17,7 @@ static bool	parse_asset_line(t_assets *a, const char *asset_line)
 	if (ft_strnstr(line, "NO ", 3))
 		parse_texture(a, line + 3, NORTH);
 	else if (ft_strnstr(line, "SO ", 3))
-		parse_texture(a, line + 3, NORTH);
+		parse_texture(a, line + 3, SOUTH);
 	else if (ft_strnstr(line, "WE ", 3))
 		parse_texture(a, line + 3, WEST);
 	else if (ft_strnstr(line, "EA ", 3))
