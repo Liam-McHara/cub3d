@@ -36,8 +36,8 @@ void	*p_malloc(size_t size);
 
 // ERROR
 # define ERROR_STR "Error"
-# define ERRMSG_ARGS "Invalid argument"
-# define ERRMSG_ARGNUM "Provide only one argument"
+# define ERRMSG_ARGS "Usage: cub3D mapfile.cub"
+# define ERRMSG_ARGEXT "The map file must end with '.cub'"
 # define ERRMSG_MAP_OPEN "Couldn't open map file"
 # define ERRMSG_MAP_CLOSE "Couldn't close map file"
 # define ERRMSG_MLX_INIT "Couldn't initiate MLX"

@@ -17,36 +17,18 @@ static bool	has_extension(char *str)
 	return (false);
 }
 
-// Returns true if 'str' consists only of alphanumeric characters
-// (excluding the last 4 characters). Otherwise, returns false.
-static bool	name_isalnum(char *str)
-{
-	size_t	len;
-	int		i;
-
-	len = ft_strlen(str);
-	i = -1;
-	while (++i < (int)len - 4)
-	{
-		if (!ft_isalnum(str[i]))
-			return (false);
-	}
-	return (true);
-}
-
-// Checks if the there's only one argument and it is a filename following the
-// format "name.cub". If it is correct, returns the filename.
-// Otherwise, prints an error and exits.
+// Checks if the there's only one argument and it has the extension ".cub".
+// If it passes, returns the filename. Otherwise, prints an error and exits.
 char	*check_args(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		put_err(ERRMSG_ARGNUM);
+		put_err(ERRMSG_ARGS);
 		exit(EXIT_FAILURE);
 	}
-	if (!has_extension(av[1]) || !name_isalnum(av[1]))
+	if (!has_extension(av[1]))
 	{
-		put_err(ERRMSG_ARGS);
+		put_err(ERRMSG_ARGEXT);
 		exit(EXIT_FAILURE);
 	}
 	return (av[1]);
