@@ -4,8 +4,6 @@
 #include <stdbool.h>		// true, false
 #include <unistd.h>			// close
 
-	#include <stdio.h>
-
 // Sets the 'player's position and direction.
 // If the player is already set, prints an error message and exits gracefully.
 static void	set_player(t_player *player, int x, int y, char dir)
@@ -29,7 +27,7 @@ static void	set_player(t_player *player, int x, int y, char dir)
 
 // Parses 'line' as if part of the map, handling leading empty lines and
 // detecting errors properly.
-static void	parse_map_line(t_cub *cub, const char *line)
+static void	parse_map_line(t_map *map, t_player *player, const char *line)
 {
 	static int	map_flag = false;
 	static 		int	i = 0;
@@ -47,10 +45,10 @@ static void	parse_map_line(t_cub *cub, const char *line)
 			if (!isinset(mapline[j], " 10NSWE"))
 				exit(put_err(ERRMSG_MAP_CHAR));
 			if (isinset(mapline[j], "NSWE"))
-				set_player(&cub->player, j, i, mapline[j]);
+				set_player(player, j, i, mapline[j]);
 		}
-		cub->map.data[i] = mapline;
-		cub->map.data[++i] = NULL;
+		map->data[i] = mapline;
+		map->data[++i] = NULL;
 	}
 	else if (map_flag)
 		exit(put_err(ERRMSG_AFTERMAP));
@@ -59,17 +57,18 @@ static void	parse_map_line(t_cub *cub, const char *line)
 // Reads from the given file descriptor, line to line, checking its structure
 // and parsing into 'cub' until EOF. At the end, 'fd' is closed.
 // If any error is found, prints a message and exits gracefully.
-void	parse_map(t_cub *cub, int fd)
+void	parse_map(t_map *map, t_player *player, int fd)
 {
 	char	*line;
 
-	printf("fd = %d\n", fd);
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
-		parse_map_line(cub, line);
+		parse_map_line(map, player, line);
 		free(line);
+		line = get_next_line(fd);
 	}
-	if (!map_is_closed(&cub->map, &cub->player.pos))
+	if (!map_is_closed(map, &player->pos))
 		exit(put_err(ERRMSG_MAP_BAD));
 	if (close(fd) == -1)
 		exit(put_syserr(ERRMSG_MAP_CLOSE));

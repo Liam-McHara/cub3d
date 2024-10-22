@@ -8,7 +8,8 @@ int	main(int ac, char **av)
 	char	*cubfile;
 
 	cubfile = check_args(ac, av);
+	int n = ft_atoi("43", "patata");
 	parse(cubfile, &c);
-	cub3d(&c);
+	//cub3d(&c);
 	return (EXIT_SUCCESS);
 }

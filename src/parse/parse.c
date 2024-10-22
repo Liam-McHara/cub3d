@@ -18,8 +18,6 @@ static bool	is_directory(const char *path)
 	return (true);
 }
 
-	#include <stdio.h>
-
 // Opens the .cub file 'cubfile' and returns its file descriptor.
 // If it can't open the file, prints an error message and exits gracefully.
 static int	open_cubfile(const char *cubfile)
@@ -42,6 +40,8 @@ static void	init_mlx(mlx_t *mlx)
 		exit(put_err(ERRMSG_MLX_INIT));
 }
 
+#include <stdio.h>
+
 // Loads the .cub file and parses its content, leaving the t_cub object
 // ready-to-use.
 // If any error is found, prints an error message and exits gracefully.
@@ -49,12 +49,12 @@ void	parse(const char *cubfile, t_cub *cub)
 {
 	int		fd;
 
-	printf("fd old = %d\n", fd);
 	fd = open_cubfile(cubfile);
-	printf("fd new = %d\n", fd);
-
+	printf("parsing assets...\n");
 	parse_assets(&cub->assets, fd);
-	printf("fd 3 = %d\n", fd);
+	printf("done! parsing map...\n");
 	parse_map(&cub->map, &cub->player, fd);
+	printf("done! initializing mlx...\n");
 	init_mlx(&cub->mlx);
+	printf("done!\n");
 }
