@@ -18,6 +18,8 @@ static bool	is_directory(const char *path)
 	return (true);
 }
 
+	#include <stdio.h>
+
 // Opens the .cub file 'cubfile' and returns its file descriptor.
 // If it can't open the file, prints an error message and exits gracefully.
 static int	open_cubfile(const char *cubfile)
@@ -47,8 +49,12 @@ void	parse(const char *cubfile, t_cub *cub)
 {
 	int		fd;
 
+	printf("fd old = %d\n", fd);
 	fd = open_cubfile(cubfile);
+	printf("fd new = %d\n", fd);
+
 	parse_assets(&cub->assets, fd);
+	printf("fd 3 = %d\n", fd);
 	parse_map(&cub->map, &cub->player, fd);
 	init_mlx(&cub->mlx);
 }
