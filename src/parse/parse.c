@@ -3,6 +3,20 @@
 #include "parse_private.h"		// parse_settings, parse_map
 #include "utils.h"				// put_err, put_syserr
 #include <fcntl.h>				// open
+#include <unistd.h>				// close
+#include <stdbool.h>			// bool: true, false
+
+// Returns true if 'path' is a directory. Otherwise, returns false.
+static bool	is_directory(const char *path)
+{
+	int	fd;
+
+	fd = open(path, O_DIRECTORY);
+	if (fd == -1)
+		return (false);
+	close(fd);
+	return (true);
+}
 
 // Opens the .cub file 'cubfile' and returns its file descriptor.
 // If it can't open the file, prints an error message and exits gracefully.
@@ -10,6 +24,8 @@ static int	open_cubfile(const char *cubfile)
 {
 	int	fd;
 
+	if (is_directory(cubfile))
+		exit(put_err("The provided path is a directory"));
 	fd = open(cubfile, O_RDONLY);
 	if (fd == -1)
 		exit(put_syserr("Couldn't open map file"));
