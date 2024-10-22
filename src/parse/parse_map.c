@@ -4,6 +4,8 @@
 #include <stdbool.h>		// true, false
 #include <unistd.h>			// close
 
+	#include <stdio.h>
+
 // Sets the 'player's position and direction.
 // If the player is already set, prints an error message and exits gracefully.
 static void	set_player(t_player *player, int x, int y, char dir)
@@ -61,6 +63,7 @@ void	parse_map(t_cub *cub, int fd)
 {
 	char	*line;
 
+	printf("fd = %d\n", fd);
 	while ((line = get_next_line(fd)))
 	{
 		parse_map_line(cub, line);
@@ -68,6 +71,6 @@ void	parse_map(t_cub *cub, int fd)
 	}
 	if (!map_is_closed(&cub->map, &cub->player.pos))
 		exit(put_err(ERRMSG_MAP_BAD));
-	if (close(fd))
+	if (close(fd) == -1)
 		exit(put_syserr(ERRMSG_MAP_CLOSE));
 }
