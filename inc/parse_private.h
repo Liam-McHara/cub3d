@@ -14,6 +14,6 @@ typedef enum e_color_type
 void	parse_texture(t_assets *a, const char *str, t_direction dir);
 void	parse_color(t_assets *a, const char *str, t_color_type type);
 void	parse_assets(t_assets *a, int fd);
-void	parse_map(t_map *map, t_player *p, int fd);
+void	parse_map(char **map, t_player *p, int fd);
 
 #endif

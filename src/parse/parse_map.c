@@ -27,7 +27,7 @@ static void	set_player(t_player *player, int x, int y, char dir)
 
 // Parses 'line' as if part of the map, handling leading empty lines and
 // detecting errors properly.
-static void	parse_map_line(t_map *map, t_player *player, const char *line)
+static void	parse_map_line(char **map, t_player *player, const char *line)
 {
 	static int	map_flag = false;
 	static 		int	i = 0;
@@ -48,8 +48,8 @@ static void	parse_map_line(t_map *map, t_player *player, const char *line)
 				set_player(player, j, i, mapline[j]);
 			++j;
 		}
-		map->data[i] = mapline;
-		map->data[++i] = NULL;
+		map[i] = mapline;
+		map[++i] = NULL;
 	}
 	else if (map_flag)
 		exit(put_err(ERRMSG_AFTERMAP));
@@ -58,7 +58,7 @@ static void	parse_map_line(t_map *map, t_player *player, const char *line)
 // Reads from the given file descriptor, line to line, checking its structure
 // and parsing into 'cub' until EOF. At the end, 'fd' is closed.
 // If any error is found, prints a message and exits gracefully.
-void	parse_map(t_map *map, t_player *player, int fd)
+void	parse_map(char **map, t_player *player, int fd)
 {
 	char	*line;
 

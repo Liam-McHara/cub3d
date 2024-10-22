@@ -19,14 +19,7 @@ enum
 	VOID = ' '
 };
 
-typedef struct s_map
-{
-	int		h;
-	int		w;
-	char	**data;
-}	t_map;
-
-char	map_check(t_map *m, t_vec2_d *pos);
-bool	map_is_closed(t_map *m, t_vec2_d *pos);
+//char	map_check(char **map, t_vec2_d *pos);
+bool	map_is_closed(char **map, t_vec2_d *pos);
 
 #endif

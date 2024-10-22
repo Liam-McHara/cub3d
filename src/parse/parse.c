@@ -52,9 +52,9 @@ void	parse(const char *cubfile, t_cub *cub)
 	fd = open_cubfile(cubfile);
 	printf("parsing assets...\n");
 	parse_assets(&cub->assets, fd);
-	printf("done! parsing map...\n");
-	parse_map(&cub->map, &cub->player, fd);
-	printf("done! initializing mlx...\n");
+	printf("done!\nparsing map...\n");
+	parse_map(cub->map, &cub->player, fd);
+	printf("done!\ninitializing mlx...\n");
 	init_mlx(&cub->mlx);
 	printf("done!\n");
 }

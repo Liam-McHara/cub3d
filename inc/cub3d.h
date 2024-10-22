@@ -13,7 +13,7 @@
 typedef struct s_cub
 {
 	t_player	player;
-	t_map		map;
+	char		**map;
 	t_assets	assets;
 	mlx_t		mlx;
 	mlx_image_t	img;
