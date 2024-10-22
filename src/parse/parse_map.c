@@ -46,6 +46,7 @@ static void	parse_map_line(t_map *map, t_player *player, const char *line)
 				exit(put_err(ERRMSG_MAP_CHAR));
 			if (isinset(mapline[j], "NSWE"))
 				set_player(player, j, i, mapline[j]);
+			++j;
 		}
 		map->data[i] = mapline;
 		map->data[++i] = NULL;
