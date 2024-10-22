@@ -49,10 +49,11 @@ static void	parse_map_line(char **map, t_player *player, const char *line)
 			++j;
 		}
 		map[i] = mapline;
-		map[++i] = NULL;
+		++i;
 	}
 	else if (map_flag)
 		exit(put_err(ERRMSG_AFTERMAP));
+	return (i);
 }
 
 // Reads from the given file descriptor, line to line, checking its structure
@@ -69,8 +70,7 @@ void	parse_map(char **map, t_player *player, int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	if (!map_is_closed(map, &player->pos))
-		exit(put_err(ERRMSG_MAP_BAD));
+	map_check_closed(map, &player->pos);
 	if (close(fd) == -1)
 		exit(put_syserr(ERRMSG_MAP_CLOSE));
 }

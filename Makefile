@@ -9,8 +9,8 @@ HEADERS	:= -I ./inc -I $(MLX_DIR)/include/MLX42
 LIBS	:= $(MLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
 SRCS	:= ./src/main.c \
 			./src/check_args.c \
-			./src/map_check.c \
-			./src/map_is_closed.c \
+#			./src/map_check.c \
+			./src/map_check_closed.c \
 			./src/cub3d.c \
 			./src/draw_minimap.c \
 			./src/movements.c \

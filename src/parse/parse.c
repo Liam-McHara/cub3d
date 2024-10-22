@@ -32,11 +32,15 @@ static int	open_cubfile(const char *cubfile)
 	return (fd);
 }
 
-// Allocates memory needed to store the map. TODO: eliminar función de una línea?
+// Allocates memory needed to store the map.
 static void init_map(t_cub *cub)
 {
+	int	i;
+
 	cub->map = (char **)p_malloc(sizeof(char *) * (HEIGHT + 1));
-	cub++;
+	i = -1;
+	while (++i <= HEIGHT)
+		cub->map[i] = NULL;
 }
 
 static void	init_mlx(mlx_t *mlx)
