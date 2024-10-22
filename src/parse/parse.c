@@ -1,4 +1,4 @@
-#include <cub3d.h>				// t_cub, t_map, t_assets, t_player
+#include <cub3d.h>				// t_cub, t_map, t_assets, t_player, HEIGHT...
 #include "MLX42.h"				// mlx_init 
 #include "parse_private.h"		// parse_settings, parse_map
 #include "utils.h"				// put_err, put_syserr
@@ -32,6 +32,13 @@ static int	open_cubfile(const char *cubfile)
 	return (fd);
 }
 
+// Allocates memory needed to store the map. TODO: eliminar función de una línea?
+static void init_map(t_cub *cub)
+{
+	cub->map = (char **)p_malloc(sizeof(char *) * (HEIGHT + 1));
+	cub++;
+}
+
 static void	init_mlx(mlx_t *mlx)
 {
 	mlx_set_setting(MLX_MAXIMIZED, true);
@@ -53,6 +60,7 @@ void	parse(const char *cubfile, t_cub *cub)
 	printf("parsing assets...\n");
 	parse_assets(&cub->assets, fd);
 	printf("done!\nparsing map...\n");
+	init_map(cub);
 	parse_map(cub->map, &cub->player, fd);
 	printf("done!\ninitializing mlx...\n");
 	init_mlx(&cub->mlx);
