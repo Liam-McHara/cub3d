@@ -8,15 +8,15 @@ static void check_tile(char **map, int x, int y)
 	int i;
 
 	if (x < 0 || y < 0 || !map[x])
-		exit(puterr(ERRMSG_MAP_BAD));
+		exit(put_err(ERRMSG_MAP_BAD));
 	i = 0;
 	while (map[y][i] && i < x)
 		++i;
 	if (i != x)
-		exit(puterr(ERRMSG_MAP_BAD));
+		exit(put_err(ERRMSG_MAP_BAD));
 	if (map[y][x] == FLOOR)
-		if (x == 1 || map[y + 1] == NULL || y == 0 || !map[y][x + 1] == NULL)
-			exit(puterr(ERRMSG_MAP_BAD));
+		if (x == 0 || !map[y + 1] || y == 0 || !map[y][x + 1])
+			exit(put_err(ERRMSG_MAP_BAD));
 }
 
 static void flood(char **map, int x, int y)
@@ -52,6 +52,6 @@ void	map_check_closed(char **map, t_vec2_d *pos)
 	}
 	dup_map[i] = NULL;
 	// duplicate map	
-	flood(dup_map, (int)pos.x, (int) pos.y);
+	flood(dup_map, (int)pos->x, (int) pos->y);
 	// free duplicate
 }
