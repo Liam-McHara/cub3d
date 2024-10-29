@@ -8,12 +8,9 @@ MLX_FLAG:= .mlx_flag
 HEADERS	:= -I ./inc -I $(MLX_DIR)/include/MLX42
 LIBS	:= $(MLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
 SRCS	:= ./src/main.c \
+			./src/debug/put_map.c \
 			./src/check_args.c \
-#			./src/map_check.c \
 			./src/map_check_closed.c \
-			./src/cub3d.c \
-			./src/draw_minimap.c \
-			./src/movements.c \
 			./src/parse/parse.c \
 			./src/parse/parse_assets.c \
 			./src/parse/parse_color.c \
@@ -27,6 +24,7 @@ SRCS	:= ./src/main.c \
 			./src/utils/ft_putendl_fd.c \
 			./src/utils/ft_putstr_fd.c \
 			./src/utils/ft_strchr.c \
+			./src/utils/ft_strdup.c \
 			./src/utils/ft_strjoin_free.c \
 			./src/utils/ft_strlcat.c \
 			./src/utils/ft_strlcpy.c \
@@ -41,9 +39,7 @@ SRCS	:= ./src/main.c \
 			./src/utils/p_malloc.c \
 			./src/utils/put_err.c \
 			./src/utils/put_mlxerr.c \
-			./src/utils/put_syserr.c \
-			./src/raycast/draw.c \
-			./src/raycast/raycasting.c
+			./src/utils/put_syserr.c
 OBJS	:= ${SRCS:%.c=%.o}
 
 # Colors
