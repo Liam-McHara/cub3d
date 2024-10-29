@@ -20,6 +20,7 @@ char	*ft_strjoin_free(char **s1, char *s2)
 		return (NULL);
 	ft_strlcpy(str, *s1, strsize);
 	ft_strlcat(str, s2, strsize);
+	str[strsize - 1] = '\0';
 	free(*s1);
 	*s1 = str;
 	return (str);

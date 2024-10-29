@@ -4,6 +4,9 @@
 #include <stdbool.h>		// true, false
 #include <unistd.h>			// close
 
+#include <stdio.h>
+#include <debug.h>
+
 // Sets the 'player's position and direction.
 // If the player is already set, prints an error message and exits gracefully.
 static void	set_player(t_player *player, int x, int y, char dir)
@@ -45,7 +48,10 @@ static void	parse_map_line(char **map, t_player *player, const char *line)
 			if (!isinset(mapline[j], " 10NSWE"))
 				exit(put_err(ERRMSG_MAP_CHAR));
 			if (isinset(mapline[j], "NSWE"))
+			{
 				set_player(player, j, i, mapline[j]);
+				mapline[j] = '0';
+			}
 			++j;
 		}
 		map[i] = mapline;
@@ -69,6 +75,8 @@ void	parse_map(char **map, t_player *player, int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
+	printf("PARSED MAP:\n");
+	put_map(map);
 	map_check_closed(map, &player->pos);
 	if (close(fd) == -1)
 		exit(put_syserr(ERRMSG_MAP_CLOSE));

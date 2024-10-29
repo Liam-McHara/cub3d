@@ -1,4 +1,4 @@
-#include "cub3d.h"			// check_args, cub3d, t_cub
+//#include "cub3d.h"			// check_args, cub3d, t_cub
 #include "parse.h"			// parse
 #include <stdlib.h>			// EXIT_SUCCESS
 
