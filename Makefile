@@ -1,5 +1,5 @@
 NAME	:= cub3D
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 
 MLX_DIR	:= ./MLX42
 MLX_URL := https://github.com/42-Madrid-Fundacion-Telefonica/MLX42.git 
@@ -10,12 +10,17 @@ LIBS	:= $(MLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
 SRCS	:= ./src/main.c \
 			./src/debug/put_map.c \
 			./src/check_args.c \
+			./src/cub3d.c \
+			./src/draw_minimap.c \
 			./src/map_check_closed.c \
+			./src/movements.c \
 			./src/parse/parse.c \
 			./src/parse/parse_assets.c \
 			./src/parse/parse_color.c \
 			./src/parse/parse_map.c \
 			./src/parse/parse_texture.c \
+			./src/raycast/draw.c \
+			./src/raycast/raycasting.c \
 			./src/utils/ft_atoi.c \
 			./src/utils/ft_isalnum.c \
 			./src/utils/ft_isnumber.c \
@@ -94,3 +99,4 @@ norm:
 	@norminette $(SRCS) inc
 
 .PHONY: all, clean, fclean, re, mlx, mlxclean, norm
+

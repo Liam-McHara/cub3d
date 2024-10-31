@@ -1,7 +1,7 @@
 #include "cub3d.h"
-#include "movements"
+#include "movements.h"
 
-static void	vector_rotate(t_matrix *rotation, t_coord_d *vector)
+static void	vector_rotate(t_matrix *rotation, t_vec2_d *vector)
 {
 	double	vector_x;
 
@@ -10,48 +10,57 @@ static void	vector_rotate(t_matrix *rotation, t_coord_d *vector)
 	vector->y = vector_x * rotation->c + vector->y * rotation->d;
 }
 
-void	rot_player(t_player *player, double angle)
+void	rot_player(t_cub *c, double angle)
 {
+	t_player	*p;
+	float		dt;
 	t_matrix	rotation;
 
-	rotation.a = cos(ROTATION_SPEED * angle);
-	rotation.b = sin(ROTATION_SPEED * angle);
-	rotation.c = -sin(ROTATION_SPEED * angle);
-	rotation.d = cos(ROTATION_SPEED * angle);
-	vector_rotate(&rotation, &player->dir);
-	vector_rotate(&rotation, &player->plane);
+	p = &c->player;
+	dt = c->mlx->delta_time;
+	rotation.a = cos(ROTATION_SPEED * dt * angle);
+	rotation.b = sin(ROTATION_SPEED * dt * angle);
+	rotation.c = -sin(ROTATION_SPEED * dt * angle);
+	rotation.d = cos(ROTATION_SPEED * dt * angle);
+	vector_rotate(&rotation, &p->dir);
+	vector_rotate(&rotation, &p->plane);
 }
 
 static void	check_collisions(t_player *player, double new_pos_x,
 		double new_pos_y, char **map)
 {
-	if (map[(int)new_pos_y][(int)player->pos.x] != '1')
-		player->pos.x = new_pos_x;
-	if (map[(int)player->pos.y][(int)new_pos_x] != '1')
+	if (map[((int)new_pos_y)][(int)player->pos.x] != '1' && map[(int)player->pos.y][((int)new_pos_x)] != '1')
+	{
 		player->pos.y = new_pos_y;
-	if (map[(int)new_pos_y][(int)player->pos.x] == '1')
-		player->pos.x = player->pos.x;
-	if (map[(int)player->pos.y][(int)new_pos_x] == '1')
-		player->pos.y = player->pos.y;
+		player->pos.x = new_pos_x;
+	}
+	else if (map[((int)new_pos_y)][(int)player->pos.x] != '1' && map[(int)player->pos.y][((int)new_pos_x)] == '1')
+		player->pos.y = new_pos_y;
+	else if (map[((int)new_pos_y)][(int)player->pos.x] == '1' && map[(int)player->pos.y][((int)new_pos_x)] != '1')
+		player->pos.x = new_pos_x;
 }
 
-void	upd_player_pos(t_player *player, int key, char **map)
+void	upd_player_pos(t_cub *c, int key)
 {
-	printf("x:: %f    y:: %f\n", player->pos.x, player->pos.y);
+	t_player	*p;
+	float		dt;		
+	
+	dt = c->mlx->delta_time;
+	p = &c->player;
 	if (key == MLX_KEY_W)
-		check_collisions(player,
-			player->pos.x + player->dir.x * PLAYER_SPEED,
-			player->pos.y + player->dir.y * PLAYER_SPEED, map);
+		check_collisions(p,
+			p->pos.x + p->dir.x * PLAYER_SPEED * dt,
+			p->pos.y + p->dir.y * PLAYER_SPEED * dt, c->map);
 	if (key == MLX_KEY_S)
-		check_collisions(player,
-			player->pos.x - player->dir.x * PLAYER_SPEED,
-			player->pos.y - player->dir.y * PLAYER_SPEED, map);
+		check_collisions(p,
+			p->pos.x - p->dir.x * PLAYER_SPEED * dt,
+			p->pos.y - p->dir.y * PLAYER_SPEED * dt, c->map);
 	if (key == MLX_KEY_A)
-		check_collisions(player,
-			player->pos.x - player->dir.y * PLAYER_SPEED,
-			player->pos.y + player->dir.x * PLAYER_SPEED, map);
+		check_collisions(p,
+			p->pos.x - p->dir.y * PLAYER_SPEED * dt,
+			p->pos.y + p->dir.x * PLAYER_SPEED * dt, c->map);
 	if (key == MLX_KEY_D)
-		check_collisions(player,
-			player->pos.x + player->dir.y * PLAYER_SPEED,
-			player->pos.y - player->dir.x * PLAYER_SPEED, map);
+		check_collisions(p,
+			p->pos.x + p->dir.y * PLAYER_SPEED * dt,
+			p->pos.y - p->dir.x * PLAYER_SPEED * dt, c->map);
 }

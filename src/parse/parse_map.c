@@ -75,8 +75,8 @@ void	parse_map(char **map, t_player *player, int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	printf("PARSED MAP:\n");
-	put_map(map);
+	//printf("PARSED MAP:\n");
+	//put_map(map);
 	map_check_closed(map, &player->pos);
 	if (close(fd) == -1)
 		exit(put_syserr(ERRMSG_MAP_CLOSE));

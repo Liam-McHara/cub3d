@@ -43,14 +43,6 @@ static void init_map(t_cub *cub)
 		cub->map[i] = NULL;
 }
 
-static void	init_mlx(mlx_t *mlx)
-{
-	mlx_set_setting(MLX_MAXIMIZED, true);
-	mlx = mlx_init(WIDTH, HEIGHT, CUBNAME, true);
-	if (!mlx)
-		exit(put_err(ERRMSG_MLX_INIT));
-}
-
 #include <stdio.h>
 
 // Loads the .cub file and parses its content, leaving the t_cub object
@@ -66,7 +58,5 @@ void	parse(const char *cubfile, t_cub *cub)
 	printf("done!\nparsing map...\n");
 	init_map(cub);
 	parse_map(cub->map, &cub->player, fd);
-	printf("done!\ninitializing mlx...\n");
-	init_mlx(&cub->mlx);
 	printf("done!\n");
 }

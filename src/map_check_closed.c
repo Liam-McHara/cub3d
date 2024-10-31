@@ -11,15 +11,6 @@ static void check_tile(char **map, int x, int y)
 {
 	int i;
 
-	/*if (map[y][x] == FLOOR)
-		printf("floor\n\n");
-	else if (map[y][x] == WALL)
-		printf("wall\n\n");
-	else if (map[y][x] == VOID)
-		printf("void\n\n");	
-	else
-		printf("unknown\n\n");
-*/
 	if (x < 0 || y < 0 || !map[y])
 		exit(put_err(ERRMSG_MAP_BAD));
 	i = 0;
@@ -64,6 +55,6 @@ void	map_check_closed(char **map, t_vec2_d *pos)
 	}
 	dup_map[i] = NULL;
 	flood(dup_map, (int)pos->x, (int) pos->y);
-	printf("\nFLOODED MAP:\n");
-	put_map(dup_map);
+	//printf("\nFLOODED MAP:\n");
+	//put_map(dup_map);
 }

@@ -1,6 +1,7 @@
-#include "map.h"
 #include "cub3d.h"
-#include "assets.h"
 
-void	draw_mmap(t_cub *c);
-void	mini_draw(t_cub *c, int x, int y, int color);
+#define MAP_PLAYER_COLOR 0x0000FF
+#define MAP_FLOOR_COLOR 0x000000
+#define MAP_WALL_COLOR 0xFFFFFF
+
+void    draw_minimap(t_cub *c);
