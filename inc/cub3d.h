@@ -6,11 +6,11 @@
 # include "assets.h"
 
 # define CUBNAME "cub3D"
-# define WIDTH 640
-# define HEIGHT 320
+# define WIDTH 1024
+# define HEIGHT 680
 # define MAX_MAP_SIZE 20
-# define SCREEN_WIDTH 640
-# define SCREEN_HEIGHT 320
+# define SCREEN_WIDTH 1024
+# define SCREEN_HEIGHT 680
 
 typedef struct s_cub
 {

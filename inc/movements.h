@@ -14,4 +14,5 @@ typedef struct s_matrix
 }	t_matrix;
 
 void	upd_player_pos(t_cub *c, int key);
+void 	mouse_rotation(t_cub *c);
 void	rot_player(t_cub *c, double angle);

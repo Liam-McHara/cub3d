@@ -20,6 +20,7 @@ SRC			:= main.c \
 			cub3d.c \
 			draw_minimap.c \
 			map_check_closed.c \
+			mouse.c \
 			movements.c \
 			parse/parse.c \
 			parse/parse_assets.c \
