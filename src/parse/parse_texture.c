@@ -5,6 +5,8 @@
 #include <stdlib.h>				// free
 #include <stdbool.h>			// true, false
 
+#include <stdio.h>
+
 // Sets the north texture.
 // If it has already been set, prints a message and exits gracefully.
 static void	set_north_texture(t_assets *a, mlx_texture_t *texture)
@@ -60,8 +62,10 @@ void	parse_texture(t_assets *a, const char *str, t_direction dir)
 	char			*texture_path;
 	mlx_texture_t	*texture;
 
-	texture_path = ft_strtrim(str, BLANK_CHARS); 
+	texture_path = ft_strtrim(str, BLANK_CHARS);
+	printf("texture : %s\n", texture_path);
 	texture = mlx_load_png(texture_path);
+	//texture = mlx_load_png("./text_WE.png");
 	if (!texture)
 		exit(put_mlxerr(texture_path));
 	free(texture_path);

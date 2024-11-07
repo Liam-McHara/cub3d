@@ -8,6 +8,9 @@
 
     #include <stdio.h>
 
+void	draw_mmap(t_cub *c);
+void	mini_draw(t_cub *c, int x, int y, int color);
+
 static void    hook(void *param)
 {
     t_cub   *c;
@@ -29,18 +32,18 @@ static void    hook(void *param)
     if (mlx_is_key_down(c->mlx, MLX_KEY_RIGHT))
 		rot_player(c, 0.2);
 	raycast_position(c);		// <-- OJO: hace explotar el ordenador
-	draw_minimap(c);
+	draw_mmap(c);
+	mini_draw(c, c->player.pos.x * 5, c->player.pos.y * 5, MAP_PLAYER_COLOR);
+    //draw_minimap(c);
 }
 
 static void	init_mlx(t_cub *c)
 {
 	//mlx_set_setting(MLX_MAXIMIZED, true);
-	c->mlx = mlx_init(WIDTH, HEIGHT, CUBNAME, true);
+	c->mlx = mlx_init(SCREEN_WIDTH, SCREEN_HEIGHT, CUBNAME, true);
 	if (!c->mlx)
 		exit(put_err(ERRMSG_MLX_INIT));
-
-    printf("mlx init\n");
-    c->img = mlx_new_image(c->mlx, WIDTH, HEIGHT);
+    c->img = mlx_new_image(c->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!c->img)
     {
 		mlx_close_window(c->mlx);
@@ -59,6 +62,6 @@ void	cub3d(t_cub *c)
 	//mlx_set_cursor_mode(c->mlx, MLX_MOUSE_HIDDEN);
     mlx_loop_hook(c->mlx, &hook, c);
 	mlx_loop(c->mlx);
-    //mlx_delete_image(c->mlx, c->img);
+    mlx_delete_image(c->mlx, c->img);
 	mlx_terminate(c->mlx);
 }

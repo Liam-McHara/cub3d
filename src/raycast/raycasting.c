@@ -105,19 +105,19 @@ static void    init_delta_dist(t_vec2_d *raydir, t_vec2_d *delta_dist)
 //STEP 1 : Calculate ray position and direction
 /*The first step in the raycasting algorithm is to calculate 
 the direction of the ray based on the player’s position and orientation. */
-void    ray_direction(t_raycast *r, t_player  *player, double cam_x)
+void    ray_direction(t_raycast *r, t_player  *player, double cam)
 {
-    r->raydir.x = player->dir.x + (player->plane.x * cam_x);
-    r->raydir.y = player->dir.y + (player->plane.y * cam_x);
+    r->raydir.x = player->dir.x + player->plane.x * cam;
+    r->raydir.y = player->dir.y + player->plane.y * cam;
     r->map_pos.x = (int)player->pos.x;
     r->map_pos.y = (int)player->pos.y;
 }
 
 /*This function initializes the ray structure with the
 necessary values to calculate the ray.*/
-static void    init_ray(t_cub *c, t_raycast *r, double cam_x)
+static void    init_ray(t_cub *c, t_raycast *r, double cam)
 {
-    ray_direction(r, &c->player, cam_x);
+    ray_direction(r, &c->player, cam);
     init_delta_dist(&r->raydir, &r->delta_dist);
     r->hit = 0;
 }
@@ -128,14 +128,14 @@ calculating the wall height and finally, updating the pixel map. */
 void    raycast_position(t_cub *c)
 {
     int		    x;
-    double	    cam_x;
+    double	    cam;
     t_raycast   r;
 
     x = 0;
     while(x < c->mlx->width)
     {
-        cam_x = 2.0 * x / (double)c->mlx->width - 1.0;
-        init_ray(c, &r, cam_x);
+        cam = 2.0 * x / (double)c->mlx->width - 1.0;
+        init_ray(c, &r, cam);
         calcul_sidedist(&r, c);
         calcul_wall_distance(&r, c->map);
         calcul_wall_height(&r, c);

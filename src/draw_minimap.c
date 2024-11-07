@@ -1,23 +1,23 @@
 #include "cub3d.h"
 #include "minimap.h"		// MAP_*_COLOR
 
-static void	mini_draw(t_cub *c, int x, int y, int color)
+void	mini_draw(t_cub *c, int x, int y, int color)
 {
 	int	x_max;
 	int	y_max;
 
 	x_max = x + 5;
 	y_max = y + 5;
-	while(x < x_max && (uint32_t)x < c->img->width)
+	while(y < y_max && (uint32_t)y < c->img->width)
 	{
-		while(y < y_max && (uint32_t)y < c->img->height)
-			mlx_put_pixel(c->img, x, y++, color);
-		y -= 5;
-		x++;
+		while(x < x_max && (uint32_t)x < c->img->height)
+			mlx_put_pixel(c->img, x++, y, color);
+		x -= 5;
+		y++;
 	}
 }
 
-static void	draw_mmap(t_cub *c)
+void	draw_mmap(t_cub *c)
 {
     int		x;
 	int		y;

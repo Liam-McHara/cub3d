@@ -13,7 +13,7 @@ typedef struct s_raycast
 	t_vec2_d	delta_dist;
 	double		wall_dist;
 	double		wall;
-	double		cam_x;
+	double		cam;
 	t_vec2_i	step;
 	int			line_height;
 	int			line_start;

@@ -39,10 +39,7 @@ static void	draw_texture(int x, t_raycast *r, t_cub *c, t_assets *assets, int si
 	int				y;
 	mlx_texture_t	*texture;
 	uint32_t		*arr;
-	//int				color;
-	//(void)	side;
 
-	//color = 0xF5F5F5FF;
 	if (r->side == 0)
 		txt_data.wall_x = c->player.pos.y + r->wall_dist * r->raydir.y;
 	else
@@ -61,8 +58,6 @@ static void	draw_texture(int x, t_raycast *r, t_cub *c, t_assets *assets, int si
 	y = r->line_start;
 	while (y < r->line_end)
 	{
-		/*if (r->side == 1)
-			color = 0xB5B5B5FF;*/
 		txt_data.txt_coord.y = (int)txt_data.txt_pos & (TEXTURE_HEIGHT - 1);
 		txt_data.txt_pos += txt_data.step;
 		mlx_put_pixel(c->img, x, y++, arr[txt_data.txt_coord.y * TEXTURE_WIDTH + txt_data.txt_coord.x]);
@@ -80,14 +75,16 @@ void	draw_line(int x, t_raycast *r, t_cub *c)
 	txt_side = get_texture_side(&r->step, &r->side);
 	while (y < r->line_start)
 	{
-		mlx_put_pixel(c->img, x, y, 0x89CFF3FF);
+		//mlx_put_pixel(c->img, x, y, 0x89CFF3FF);
+		mlx_put_pixel(c->img, x, y, c->assets.c);
 		y++;
 	}
 	draw_texture(x, r, c, &c->assets, txt_side);
 	y = r->line_end;
 	while ((uint32_t)y < SCREEN_HEIGHT)
 	{
-		mlx_put_pixel(c->img, x, y, 0xB99470FF);
+		//mlx_put_pixel(c->img, x, y, 0xB99470FF);
+		mlx_put_pixel(c->img, x, y, c->assets.f);
 		y++;
 	}
 }

@@ -3,6 +3,7 @@
 
 # define PLAYER_SPEED 5.0
 # define ROTATION_SPEED 14.0
+# define RADIAN 0.1
 
 typedef struct s_matrix
 {
