@@ -20,27 +20,27 @@ static void	set_player(t_player *player, int x, int y, char dir)
 	player->pos.y = y + 0.5f;
 	if (dir == 'N')
 	{
-		player->dir = (t_vec2_d) {.x = -1, .y = 0};
-		player->plane.y = 0.66;
-		player->plane.x = 0;
+		player->dir = (t_vec2_d) {.x = 0, .y = -1};
+		player->plane.x = 0.66;
+		player->plane.y = 0;
 	}
 	else if (dir == 'S')
-	{
-		player->dir = (t_vec2_d) {.x = 1, .y = 0};
-		player->plane.y = -0.66;
-		player->plane.x = 0;
-	}
-	else if (dir == 'E')
 	{
 		player->dir = (t_vec2_d) {.x = 0, .y = 1};
 		player->plane.x = -0.66;
 		player->plane.y = 0;
 	}
+	else if (dir == 'E')
+	{
+		player->dir = (t_vec2_d) {.x = 1, .y = 0};
+		player->plane.x = 0;
+		player->plane.y = -0.66;
+	}
 	else if (dir == 'W')
 	{
-		player->dir = (t_vec2_d) {.x = 0, .y = -1};
-		player->plane.x = 0.66;
-		player->plane.y = 0;
+		player->dir = (t_vec2_d) {.x = -1, .y = 0};
+		player->plane.x = 0;
+		player->plane.y = 0.66;
 	}
 }
 
