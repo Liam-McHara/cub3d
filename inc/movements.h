@@ -2,7 +2,7 @@
 #include "assets.h"
 
 # define PLAYER_SPEED 6.0
-# define ROTATION_SPEED 15.0
+# define ROTATION_SPEED 3.0
 # define RADIUS 0.25
 
 typedef struct s_matrix

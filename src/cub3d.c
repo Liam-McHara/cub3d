@@ -28,16 +28,16 @@ static void    hook(void *param)
     if (mlx_is_key_down(c->mlx, MLX_KEY_D))
         upd_player_pos(c, MLX_KEY_D);
     if (mlx_is_key_down(c->mlx, MLX_KEY_LEFT))
-        rot_player(c, -0.2);           // constante
+        rot_player(c, -ROTATION_SPEED);
     if (mlx_is_key_down(c->mlx, MLX_KEY_RIGHT))
-		rot_player(c, 0.2);
-	raycast_position(c);		// <-- OJO: hace explotar el ordenador por que sera ??????
+		rot_player(c, ROTATION_SPEED);
+	raycast_position(c);
     draw_minimap(c);
 }
 
 static void	init_mlx(t_cub *c)
 {
-	//mlx_set_setting(MLX_MAXIMIZED, true);
+	//mlx_set_setting(MLX_MAXIMIZED, true);  // <-- OJO: hace explotar el ordenador 
 	c->mlx = mlx_init(SCREEN_WIDTH, SCREEN_HEIGHT, CUBNAME, true);
 	if (!c->mlx)
 		exit(put_err(ERRMSG_MLX_INIT));

@@ -12,7 +12,7 @@ static void	vector_rotate(t_matrix *rotation, t_vec2_d *vector)
 	vector->y = vector_x * rotation->c + vector->y * rotation->d;
 }
 
-void	rot_player(t_cub *c, double angle)
+void	rot_player(t_cub *c, double rot)
 {
 	t_player	*p;
 	float		dt;
@@ -20,10 +20,10 @@ void	rot_player(t_cub *c, double angle)
 
 	p = &c->player;
 	dt = c->mlx->delta_time;
-	rotation.a = cos(ROTATION_SPEED * dt * angle);
-	rotation.b = sin(ROTATION_SPEED * dt * angle);
-	rotation.c = -sin(ROTATION_SPEED * dt * angle);
-	rotation.d = cos(ROTATION_SPEED * dt * angle);
+	rotation.a = cos(dt * rot);
+	rotation.b = sin(dt * rot);
+	rotation.c = -sin(dt * rot);
+	rotation.d = cos(dt * rot);
 	vector_rotate(&rotation, &p->dir);
 	vector_rotate(&rotation, &p->plane);
 }
