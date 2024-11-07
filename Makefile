@@ -1,51 +1,71 @@
-NAME	:= cub3D
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
+NAME		:= cub3D
+CFLAGS		:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
+DFLAGS		= -MT $@ -MMD -MP
 
-MLX_DIR	:= ./MLX42
-MLX_URL := https://github.com/42-Madrid-Fundacion-Telefonica/MLX42.git 
-MLX_FLAG:= .mlx_flag
+# Includes
+INCDIR		= inc
+INCFLAG		:= -I $(INCDIR)
 
-HEADERS	:= -I ./inc -I $(MLX_DIR)/include/MLX42
-LIBS	:= $(MLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
-SRCS	:= ./src/main.c \
-			./src/debug/put_map.c \
-			./src/check_args.c \
-			./src/cub3d.c \
-			./src/draw_minimap.c \
-			./src/map_check_closed.c \
-			./src/movements.c \
-			./src/parse/parse.c \
-			./src/parse/parse_assets.c \
-			./src/parse/parse_color.c \
-			./src/parse/parse_map.c \
-			./src/parse/parse_texture.c \
-			./src/raycast/draw.c \
-			./src/raycast/raycasting.c \
-			./src/utils/ft_atoi.c \
-			./src/utils/ft_isalnum.c \
-			./src/utils/ft_isnumber.c \
-			./src/utils/ft_isspace.c \
-			./src/utils/ft_memcpy.c \
-			./src/utils/ft_putendl_fd.c \
-			./src/utils/ft_putstr_fd.c \
-			./src/utils/ft_strchr.c \
-			./src/utils/ft_strdup.c \
-			./src/utils/ft_strjoin_free.c \
-			./src/utils/ft_strlcat.c \
-			./src/utils/ft_strlcpy.c \
-			./src/utils/ft_strlen.c \
-			./src/utils/ft_strncmp.c \
-			./src/utils/ft_strnstr.c \
-			./src/utils/ft_strrchr.c \
-			./src/utils/ft_strtrim.c \
-			./src/utils/ft_substr.c \
-			./src/utils/get_next_line.c \
-			./src/utils/isinset.c \
-			./src/utils/p_malloc.c \
-			./src/utils/put_err.c \
-			./src/utils/put_mlxerr.c \
-			./src/utils/put_syserr.c
-OBJS	:= ${SRCS:%.c=%.o}
+# Libraries
+MLX_DIR		:= MLX42
+MLX_URL 	:= https://github.com/42-Madrid-Fundacion-Telefonica/MLX42.git 
+MLX_FLAG	:= .mlx_flag
+INCFLAG		+= -I $(MLX_DIR)/include/MLX42
+LIBS		:= $(MLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
+
+# Sources
+SRC			:= main.c \
+			debug/put_map.c \
+			check_args.c \
+			cub3d.c \
+			draw_minimap.c \
+			map_check_closed.c \
+			movements.c \
+			parse/parse.c \
+			parse/parse_assets.c \
+			parse/parse_color.c \
+			parse/parse_map.c \
+			parse/parse_texture.c \
+			raycast/draw.c \
+			raycast/raycasting.c \
+			utils/ft_atoi.c \
+			utils/ft_isalnum.c \
+			utils/ft_isnumber.c \
+			utils/ft_isspace.c \
+			utils/ft_memcpy.c \
+			utils/ft_putendl_fd.c \
+			utils/ft_putstr_fd.c \
+			utils/ft_strchr.c \
+			utils/ft_strdup.c \
+			utils/ft_strjoin_free.c \
+			utils/ft_strlcat.c \
+			utils/ft_strlcpy.c \
+			utils/ft_strlen.c \
+			utils/ft_strncmp.c \
+			utils/ft_strnstr.c \
+			utils/ft_strrchr.c \
+			utils/ft_strtrim.c \
+			utils/ft_substr.c \
+			utils/get_next_line.c \
+			utils/isinset.c \
+			utils/p_malloc.c \
+			utils/put_err.c \
+			utils/put_mlxerr.c \
+			utils/put_syserr.c
+SRCDIR		= src
+SRCS		= $(addprefix $(SRCDIR)/, $(SRC))
+
+# Objects
+OBJDIR		= .obj
+OBJS		= $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
+
+# Dependencies
+DEPDIR		= .dep/
+DEPS		= $(addprefix $(DEPDIR), $(SRC:.c=.d))
+DEPDIRS		= $(DEPDIR)parse/ \
+			$(DEPDIR)raycast/ \
+			$(DEPDIR)utils/ \
+			$(DEPDIR)debug/ \
 
 # Colors
 WHITE		= \033[0;37m
@@ -59,21 +79,30 @@ BRED		= \033[1;31m
 BBLUE		= \033[1;34m
 BYELLOW		= \033[1;33m
 
+
 all: $(NAME)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
+$(OBJDIR)/%.o:	$(SRCDIR)/%.c Makefile
+			@mkdir -p $(@D)
+			@echo INCFLAG = $(INCFLAG)
+			@$(CC) $(CFLAGS) $(DFLAGS) $(INCFLAG) -c $< -o $@
+			@printf "\t$(YELLOW)$< $(GREEN)compiled$(DEFAULT)\n"
+			@mkdir -p $(DEPDIR) $(DEPDIRS)
+			@mv $(patsubst %.o,%.d,$@) $(subst $(OBJDIR),$(DEPDIR),$(@D))/
 
-$(NAME): $(MLX_FLAG)  $(OBJS) Makefile
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
-	@printf "$(BGREEN)$(NAME) built ✅\n$(DEFAULT)"
+$(NAME)::	$(OBJS) $(MLX_FLAG) Makefile
+			@$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(INCFLAGS) -o $(NAME)
+			@echo "$(GREEN)[ $(BGREEN)$(NAME) $(GREEN)created! ]$(DEFAULT)"
+
+$(NAME)::
+			@echo "$(BLUE)[ All done already ]$(DEFAULT)"
 
 clean:
-	@rm -fr $(OBJS)
+	@rm -fr $(OBJDIR) $(DEPDIR) 
 	@printf "$(RED)Object files removed\n$(DEFAULT)"
 
 fclean:
-	@rm -fr $(NAME) $(OBJS)
+	@rm -fr $(NAME) $(OBJDIR) $(DEPDIR)
 	@printf "$(BRED)$(NAME) and object files removed\n$(DEFAULT)"
 
 $(MLX_FLAG):
@@ -97,6 +126,8 @@ re: clean all
 
 norm:
 	@norminette $(SRCS) inc
+
+-include $(DEPS)
 
 .PHONY: all, clean, fclean, re, mlx, mlxclean, norm
 
