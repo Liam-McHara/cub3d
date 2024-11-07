@@ -72,6 +72,7 @@ void	parse_color(t_assets *a, const char *str, t_color_type type)
 
 	color_str = ft_strtrim(str, BLANK_CHARS);
 	check_color_syntax(color_str);
+	color.a = 255;
 	color.r = get_color_value(color_str);
 	color.g = get_color_value(ft_strchr(color_str, ',') + 1);
 	color.b = get_color_value(ft_strrchr(color_str, ',') + 1);
