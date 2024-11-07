@@ -84,7 +84,6 @@ all: $(NAME)
 
 $(OBJDIR)/%.o:	$(SRCDIR)/%.c Makefile
 			@mkdir -p $(@D)
-			@echo INCFLAG = $(INCFLAG)
 			@$(CC) $(CFLAGS) $(DFLAGS) $(INCFLAG) -c $< -o $@
 			@printf "\t$(YELLOW)$< $(GREEN)compiled$(DEFAULT)\n"
 			@mkdir -p $(DEPDIR) $(DEPDIRS)
