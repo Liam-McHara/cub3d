@@ -30,26 +30,18 @@ void	rot_player(t_cub *c, double angle)
 
 static void	check_collisions(t_player *player, t_vec2_d new_pos, char **map)
 {
-	if (map[((int)new_pos.y)][((int)new_pos.x)] == '1')
+	if (map[(int)new_pos.y][(int)player->pos.x] == FLOOR && map[(int)player->pos.y][(int)new_pos.x] == FLOOR)
 	{
-	 	if (map[((int)new_pos.y)][(int)player->pos.x] != '1' && map[(int)player->pos.y][((int)new_pos.x)] == '1')
+		if (map[(int)(new_pos.y)][(int)(new_pos.x)] == FLOOR)
 		{
-			printf("paso por aqui? 2\n");
-			player->pos.y = new_pos.y;
+			player->pos.y = (new_pos.y);
+			player->pos.x = (new_pos.x);
 		}
-		else if (map[((int)new_pos.y)][(int)player->pos.x] == '1' && map[(int)player->pos.y][((int)new_pos.x)] != '1')
-		{
-			printf("paso por aqui? 3\n");
-			player->pos.x = new_pos.x;
-		}
-		return ;
 	}
-	else if (map[((int)new_pos.y)][(int)player->pos.x] != '1' && map[(int)player->pos.y][((int)new_pos.x)] != '1')
-	{
-		printf("paso por aqui?\n");
+	else if (map[(int)new_pos.y][(int)player->pos.x] == FLOOR)
 		player->pos.y = new_pos.y;
+	else if (map[(int)player->pos.y][(int)new_pos.x] == FLOOR)
 		player->pos.x = new_pos.x;
-	}
 }
 
 void	upd_player_pos(t_cub *c, int key)
