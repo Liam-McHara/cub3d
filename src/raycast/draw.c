@@ -23,13 +23,13 @@ static mlx_texture_t *get_texture(int side, t_assets *assets)
 static t_txt_side	get_texture_side(t_vec2_i *step, int *side)
 {
 	if (*side == 0 && step->x < 0)
-		return (NO);
-	if (*side == 0 && step->x > 0)
-		return (SO);
-	if (*side == 1 && step->y < 0)
 		return (EA);
-	if (*side == 1 && step->y > 0)
+	if (*side == 0 && step->x > 0)
 		return (WE);
+	if (*side == 1 && step->y < 0)
+		return (SO);
+	if (*side == 1 && step->y > 0)
+		return (NO);
 	return (0);
 }
 

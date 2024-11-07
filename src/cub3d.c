@@ -25,10 +25,14 @@ static void    hook(void *param)
     if (mlx_is_key_down(c->mlx, MLX_KEY_D))
         upd_player_pos(c, MLX_KEY_D);
     if (mlx_is_key_down(c->mlx, MLX_KEY_LEFT))
-        rot_player(c, -ROTATION_SPEED);
+        rot_player(c, ROTATION_SPEED);
     if (mlx_is_key_down(c->mlx, MLX_KEY_RIGHT))
+<<<<<<< HEAD
 		rot_player(c, ROTATION_SPEED);
     mouse_rotation(c);
+=======
+		rot_player(c, -ROTATION_SPEED);
+>>>>>>> 235923c8f87e52a99b538b219830e6ae575ca191
 	raycast_position(c);
     draw_minimap(c);
 }
