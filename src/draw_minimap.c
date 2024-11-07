@@ -21,7 +21,6 @@ void	draw_mmap(t_cub *c)
 {
     int		x;
 	int		y;
-	int		color;
 
 	y = 0;
 	while(c->map[y])
@@ -29,11 +28,10 @@ void	draw_mmap(t_cub *c)
 		x = 0;
 		while(c->map[y][x])
 		{
-			if (c->map[y][x] == '1')
-				color = MAP_WALL_COLOR;
-			else
-				color = MAP_FLOOR_COLOR;
-			mini_draw(c, x * 5, y * 5, color);
+			if (c->map[y][x] == WALL)
+				mini_draw(c, x * 5, y * 5, MAP_WALL_COLOR);
+			else if (c->map[y][x] == FLOOR)
+				mini_draw(c, x * 5, y * 5, MAP_FLOOR_COLOR);
 			x++;
 		}
 		y++;

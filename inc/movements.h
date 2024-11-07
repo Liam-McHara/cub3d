@@ -1,9 +1,9 @@
 #include <math.h>
 #include "assets.h"
 
-# define PLAYER_SPEED 5.0
-# define ROTATION_SPEED 14.0
-# define RADIAN 0.1
+# define PLAYER_SPEED 6.0
+# define ROTATION_SPEED 15.0
+# define RADIUS 0.25
 
 typedef struct s_matrix
 {

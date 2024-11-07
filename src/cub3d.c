@@ -31,10 +31,8 @@ static void    hook(void *param)
         rot_player(c, -0.2);           // constante
     if (mlx_is_key_down(c->mlx, MLX_KEY_RIGHT))
 		rot_player(c, 0.2);
-	raycast_position(c);		// <-- OJO: hace explotar el ordenador
-	draw_mmap(c);
-	mini_draw(c, c->player.pos.x * 5, c->player.pos.y * 5, MAP_PLAYER_COLOR);
-    //draw_minimap(c);
+	raycast_position(c);		// <-- OJO: hace explotar el ordenador por que sera ??????
+    draw_minimap(c);
 }
 
 static void	init_mlx(t_cub *c)
