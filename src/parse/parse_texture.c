@@ -65,7 +65,6 @@ void	parse_texture(t_assets *a, const char *str, t_direction dir)
 	texture_path = ft_strtrim(str, BLANK_CHARS);
 	printf("texture : %s\n", texture_path);
 	texture = mlx_load_png(texture_path);
-	//texture = mlx_load_png("./text_WE.png");
 	if (!texture)
 		exit(put_mlxerr(texture_path));
 	free(texture_path);
