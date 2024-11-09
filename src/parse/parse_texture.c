@@ -6,8 +6,6 @@
 #include <stdbool.h>			// true, false
 #include "textures.h"			// TEXTURE_HEIGHT, TEXTURE_WIDTH
 
-#include <stdio.h>
-
 // Sets the north texture.
 // If it has already been set, prints a message and exits gracefully.
 static void	set_north_texture(t_assets *a, mlx_texture_t *texture)
@@ -67,8 +65,8 @@ void	parse_texture(t_assets *a, const char *str, t_direction dir)
 	texture = mlx_load_png(texture_path);
 	if (!texture)
 		exit(put_mlxerr(texture_path));
-	//if (texture->height != TEXTURE_HEIGHT || texture->width != TEXTURE_WIDTH)
-	//	exit(1);		// OJO ! Ficar misatge d'error 
+	if (texture->height != TEXTURE_HEIGHT || texture->width != TEXTURE_WIDTH)
+		exit(put_err(ERRMSG_PNG_SIZE));
 	free(texture_path);  
 	if (dir == NORTH)
 		set_north_texture(a, texture);

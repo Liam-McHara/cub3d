@@ -43,6 +43,7 @@ void	*p_malloc(size_t size);
 # define ERRMSG_MAP_CLOSE "Couldn't close map file"
 # define ERRMSG_MLX_INIT "Couldn't initiate MLX"
 # define ERRMSG_MAP_BAD	"Bad formatted map file"
+# define ERRMSG_PNG_SIZE "Wrong texture size"
 # define ERRMSG_MAP_CHAR "Invalid map character"
 # define ERRMSG_MEMORY "Unable to allocate enought memory"
 # define ERRMSG_MULTIPLAYER "There's more than one player on the map"
