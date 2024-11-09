@@ -3,7 +3,7 @@
 #include "raycast.h"
 #include "textures.h"
 
-static mlx_texture_t *get_texture(t_raycast *r, t_assets *assets)
+static mlx_texture_t	*get_texture(t_raycast *r, t_assets *assets)
 {
 	if (r->side == 1 && r->step.y > 0)
 		return (assets->n);
@@ -14,7 +14,7 @@ static mlx_texture_t *get_texture(t_raycast *r, t_assets *assets)
 	if (r->side == 0 && r->step.x > 0)
 		return (assets->w);
 	return (0);
-} 
+}
 
 static void	draw_texture(int x, t_raycast *r, t_cub *c)
 {
@@ -22,20 +22,22 @@ static void	draw_texture(int x, t_raycast *r, t_cub *c)
 	int				y;
 	mlx_texture_t	*texture;
 	uint32_t		*txt;
+	t_vec2_i		t;
 
 	init_data_txt(r, c, &txt_data);
+	t = txt_data.txt_coord;
 	texture = get_texture(r, &c->assets);
 	txt = (uint32_t *)texture->pixels;
 	y = r->line_start;
 	while (y < r->line_end)
 	{
-		txt_data.txt_coord.y = (int)txt_data.txt_pos & (TEXTURE_HEIGHT - 1);
+		t.y = (int)txt_data.txt_pos & (TEXTURE_HEIGHT - 1);
 		txt_data.txt_pos += txt_data.step;
-		mlx_put_pixel(c->img, x, y++, txt[txt_data.txt_coord.y * TEXTURE_WIDTH + txt_data.txt_coord.x]);
+		mlx_put_pixel(c->img, x, y++, txt[t.y * TEXTURE_WIDTH + t.x]);
 	}
 }
 
-static void draw_ceil_floor(int x, t_cub *c, t_raycast *r, int max)
+static void	draw_ceil_floor(int x, t_cub *c, t_raycast *r, int max)
 {
 	int	y;
 
@@ -45,7 +47,7 @@ static void draw_ceil_floor(int x, t_cub *c, t_raycast *r, int max)
 		while (y < max)
 			mlx_put_pixel(c->img, x, y++, c->assets.c);
 	}
-	else 
+	else
 	{
 		y = r->line_end;
 		while (y < max)

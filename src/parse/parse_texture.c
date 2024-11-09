@@ -67,8 +67,8 @@ void	parse_texture(t_assets *a, const char *str, t_direction dir)
 	texture = mlx_load_png(texture_path);
 	if (!texture)
 		exit(put_mlxerr(texture_path));
-	if (texture->height != TEXTURE_HEIGHT || texture->width != TEXTURE_WIDTH)
-		exit(1);		// OJO ! Ficar misatge d'error 
+	//if (texture->height != TEXTURE_HEIGHT || texture->width != TEXTURE_WIDTH)
+	//	exit(1);		// OJO ! Ficar misatge d'error 
 	free(texture_path);  
 	if (dir == NORTH)
 		set_north_texture(a, texture);

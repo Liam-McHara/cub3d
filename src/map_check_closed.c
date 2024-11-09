@@ -7,9 +7,9 @@
 
 // Checks a map tile. If the position is outside the map, or it's a floor
 // at the border, prints an error and exits gracefully.
-static void check_tile(char **map, int x, int y)
+static void	check_tile(char **map, int x, int y)
 {
-	int i;
+	int	i;
 
 	if (x < 0 || y < 0 || !map[y])
 		exit(put_err(ERRMSG_MAP_BAD));
@@ -23,7 +23,7 @@ static void check_tile(char **map, int x, int y)
 			exit(put_err(ERRMSG_MAP_BAD));
 }
 
-static void flood(char **map, int x, int y)
+static void	flood(char **map, int x, int y)
 {
 	//printf("Tile [%d, %d]: %d\n", x, y, map[y][x]);
 	check_tile(map, x, y);

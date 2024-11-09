@@ -20,13 +20,15 @@ SRC			:= main.c \
 			cub3d.c \
 			map_check_closed.c \
 			minimap.c \
-			mouse.c \
-			movements.c \
+			movements/move.c \
+			movements/move_dir.c \
+			movements/move_rot.c \
 			parse/parse.c \
 			parse/parse_assets.c \
 			parse/parse_color.c \
 			parse/parse_map.c \
 			parse/parse_texture.c \
+			raycast/init_ray.c \
 			raycast/txt_draw.c \
 			raycast/txt_init.c \
 			raycast/raycasting.c \
@@ -64,10 +66,12 @@ OBJS		= $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 # Dependencies
 DEPDIR		= .dep/
 DEPS		= $(addprefix $(DEPDIR), $(SRC:.c=.d))
-DEPDIRS		= $(DEPDIR)parse/ \
+DEPDIRS		= $(DEPDIR)movements/ \
+			$(DEPDIR)parse/ \
 			$(DEPDIR)raycast/ \
 			$(DEPDIR)utils/ \
 			$(DEPDIR)debug/ \
+
 
 # Colors
 WHITE		= \033[0;37m
