@@ -59,6 +59,7 @@ void	cub3d(t_cub *c)
 {
 	init_mlx(c);
 	mlx_set_cursor_mode(c->mlx, MLX_MOUSE_HIDDEN);
+	mlx_set_mouse_pos(c->mlx, SCREEN_HEIGHT / 2, SCREEN_WIDTH / 2);
 	mlx_loop_hook(c->mlx, &hook, c);
 	mlx_loop(c->mlx);
 	mlx_delete_image(c->mlx, c->img);
