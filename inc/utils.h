@@ -13,6 +13,7 @@
 # endif
 # define BLANK_CHARS " \f\n\r\t\v"
 
+int		color_tweak(int	color);
 int		ft_atoi(const char *str);
 bool	ft_isalnum(char c);
 bool	ft_isnumber(char c);

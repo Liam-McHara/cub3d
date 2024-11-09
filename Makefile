@@ -32,6 +32,7 @@ SRC			:= main.c \
 			raycast/txt_draw.c \
 			raycast/txt_init.c \
 			raycast/raycasting.c \
+			utils/color_tweak.c \
 			utils/ft_atoi.c \
 			utils/ft_isalnum.c \
 			utils/ft_isnumber.c \

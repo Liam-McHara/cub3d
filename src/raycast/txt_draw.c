@@ -2,6 +2,7 @@
 #include "assets.h"
 #include "raycast.h"
 #include "textures.h"
+#include "utils.h"		// color_tweak
 
 static mlx_texture_t	*get_texture(t_raycast *r, t_assets *assets)
 {
@@ -21,19 +22,19 @@ static void	draw_texture(int x, t_raycast *r, t_cub *c)
 	t_texture_d		txt_data;
 	int				y;
 	mlx_texture_t	*texture;
-	uint32_t		*txt;
+	int				color;
 	t_vec2_i		t;
 
 	init_data_txt(r, c, &txt_data);
 	t = txt_data.txt_coord;
 	texture = get_texture(r, &c->assets);
-	txt = (uint32_t *)texture->pixels;
 	y = r->line_start;
 	while (y < r->line_end)
 	{
 		t.y = (int)txt_data.txt_pos & (TEXTURE_HEIGHT - 1);
 		txt_data.txt_pos += txt_data.step;
-		mlx_put_pixel(c->img, x, y++, txt[t.y * TEXTURE_WIDTH + t.x]);
+		color = ((uint32_t *)texture->pixels)[t.y * TEXTURE_WIDTH + t.x];
+		mlx_put_pixel(c->img, x, y++, color_tweak(color));
 	}
 }
 
