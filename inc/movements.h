@@ -1,8 +1,9 @@
 #include <math.h>
 #include "assets.h"
 
-# define PLAYER_SPEED 6.0
+# define PLAYER_SPEED 4.0
 # define ROTATION_SPEED 3.0
+# define MOUSE_ROT_SPEED 0.2
 # define RADIUS 0.25
 
 typedef struct s_matrix
