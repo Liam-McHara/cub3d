@@ -20,6 +20,6 @@ typedef struct s_raycast
 	int			line_end;
 }	t_raycast;
 
-void	draw_line(int x, t_raycast *r, t_cub *c);
+void	draw_cub(int x, t_raycast *r, t_cub *c);
 
 #endif

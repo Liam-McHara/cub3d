@@ -4,6 +4,7 @@
 #include "utils.h"				// ft_strtrim, put_err ...
 #include <stdlib.h>				// free
 #include <stdbool.h>			// true, false
+#include "textures.h"			// TEXTURE_HEIGHT, TEXTURE_WIDTH
 
 #include <stdio.h>
 
@@ -63,11 +64,12 @@ void	parse_texture(t_assets *a, const char *str, t_direction dir)
 	mlx_texture_t	*texture;
 
 	texture_path = ft_strtrim(str, BLANK_CHARS);
-	printf("texture : %s\n", texture_path);
 	texture = mlx_load_png(texture_path);
 	if (!texture)
 		exit(put_mlxerr(texture_path));
-	free(texture_path);
+	if (texture->height != TEXTURE_HEIGHT || texture->width != TEXTURE_WIDTH)
+		exit(1);		// OJO ! Ficar misatge d'error 
+	free(texture_path);  
 	if (dir == NORTH)
 		set_north_texture(a, texture);
 	else if (dir == SOUTH)

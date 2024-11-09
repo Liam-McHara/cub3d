@@ -18,8 +18,8 @@ SRC			:= main.c \
 			debug/put_map.c \
 			check_args.c \
 			cub3d.c \
-			draw_minimap.c \
 			map_check_closed.c \
+			minimap.c \
 			mouse.c \
 			movements.c \
 			parse/parse.c \
@@ -27,7 +27,8 @@ SRC			:= main.c \
 			parse/parse_color.c \
 			parse/parse_map.c \
 			parse/parse_texture.c \
-			raycast/draw.c \
+			raycast/txt_draw.c \
+			raycast/txt_init.c \
 			raycast/raycasting.c \
 			utils/ft_atoi.c \
 			utils/ft_isalnum.c \
@@ -81,7 +82,7 @@ BBLUE		= \033[1;34m
 BYELLOW		= \033[1;33m
 
 
-all: $(NAME)
+all: $(MLX_FLAG) $(NAME)
 
 $(OBJDIR)/%.o:	$(SRCDIR)/%.c Makefile
 			@mkdir -p $(@D)
@@ -90,7 +91,7 @@ $(OBJDIR)/%.o:	$(SRCDIR)/%.c Makefile
 			@mkdir -p $(DEPDIR) $(DEPDIRS)
 			@mv $(patsubst %.o,%.d,$@) $(subst $(OBJDIR),$(DEPDIR),$(@D))/
 
-$(NAME)::	$(OBJS) $(MLX_FLAG) Makefile
+$(NAME)::	$(OBJS) Makefile
 			@$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(INCFLAGS) -o $(NAME)
 			@echo "$(GREEN)[ $(BGREEN)$(NAME) $(GREEN)created! ]$(DEFAULT)"
 

@@ -3,10 +3,6 @@
 #include "minimap.h"
 #include "movements.h"
 #include "utils.h"      // put_err
-#include <stdlib.h>     // exit
-#include <unistd.h>     // exit
-
-    #include <stdio.h>
 
 static void    hook(void *param)
 {
@@ -27,14 +23,10 @@ static void    hook(void *param)
     if (mlx_is_key_down(c->mlx, MLX_KEY_LEFT))
         rot_player(c, ROTATION_SPEED);
     if (mlx_is_key_down(c->mlx, MLX_KEY_RIGHT))
-<<<<<<< HEAD
-		rot_player(c, ROTATION_SPEED);
-    mouse_rotation(c);
-=======
 		rot_player(c, -ROTATION_SPEED);
->>>>>>> 235923c8f87e52a99b538b219830e6ae575ca191
+    mouse_rotation(c);
 	raycast_position(c);
-    draw_minimap(c);
+    minimap(c);
 }
 
 static void	init_mlx(t_cub *c)
@@ -56,6 +48,14 @@ static void	init_mlx(t_cub *c)
 	}
 }
 
+static void delete_textures(t_cub *c)
+{
+    mlx_delete_texture(c->assets.n);
+    mlx_delete_texture(c->assets.s);
+    mlx_delete_texture(c->assets.e);
+    mlx_delete_texture(c->assets.w);
+}
+
 void	cub3d(t_cub *c)
 {
     init_mlx(c);
@@ -63,5 +63,6 @@ void	cub3d(t_cub *c)
     mlx_loop_hook(c->mlx, &hook, c);
 	mlx_loop(c->mlx);
     mlx_delete_image(c->mlx, c->img);
+    delete_textures(c);
 	mlx_terminate(c->mlx);
 }

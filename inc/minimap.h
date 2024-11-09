@@ -4,4 +4,4 @@
 #define MAP_FLOOR_COLOR 0x000000FF
 #define MAP_WALL_COLOR 0xFFFFFFFF
 
-void    draw_minimap(t_cub *c);
+void    minimap(t_cub *c);

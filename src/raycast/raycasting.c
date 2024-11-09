@@ -1,10 +1,7 @@
 #include "cub3d.h"
-#include <stdlib.h>
 #include "assets.h"
 #include "raycast.h"
-#include <stdio.h>
 #include <math.h>
-
 
 //STEP 5 : Step 5: Calculating the Wall Height
 /* This function calculates the height of the wall
@@ -139,7 +136,7 @@ void    raycast_position(t_cub *c)
         calcul_sidedist(&r, c);
         calcul_wall_distance(&r, c->map);
         calcul_wall_height(&r, c);
-        draw_line(x, &r, c);
+        draw_cub(x, &r, c);
         x++;
     }
 }

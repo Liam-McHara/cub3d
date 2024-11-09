@@ -5,6 +5,8 @@
 # define TEXTURE_HEIGHT 256
 
 # include "vec2.h"
+# include "cub3d.h"
+# include "raycast.h"
 
 typedef struct s_texture_d
 {
@@ -14,12 +16,6 @@ typedef struct s_texture_d
 	double		txt_pos;
 }	t_texture_d;
 
-typedef enum e_txt_side
-{
-	NO,
-	SO,
-	WE,
-	EA
-}	t_txt_side;
+void init_data_txt(t_raycast *r, t_cub *c, t_texture_d *txt_data);
 
 #endif
