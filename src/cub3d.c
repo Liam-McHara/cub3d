@@ -31,7 +31,7 @@ static void	hook(void *param)
 static void	init_mlx(t_cub *c)
 {
 	//mlx_set_setting(MLX_MAXIMIZED, true);  // <-- OJO: hace explotar el ordenador 
-	c->mlx = mlx_init(SCREEN_WIDTH, SCREEN_HEIGHT, CUBNAME, true);
+	c->mlx = mlx_init(SCREEN_WIDTH, SCREEN_HEIGHT, CUBNAME, false);
 	if (!c->mlx)
 		exit(put_err(ERRMSG_MLX_INIT));
 	c->img = mlx_new_image(c->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
