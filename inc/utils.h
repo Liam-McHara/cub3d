@@ -47,6 +47,7 @@ void	*p_malloc(size_t size);
 # define ERRMSG_PNG_SIZE "Wrong texture size"
 # define ERRMSG_MAP_CHAR "Invalid map character"
 # define ERRMSG_MEMORY "Unable to allocate enought memory"
+# define ERRMSG_NO_PLAYER "There's no player on the map"
 # define ERRMSG_MULTIPLAYER "There's more than one player on the map"
 # define ERRMSG_MULTIDEFINE "Some element(s) defined more than once"
 # define ERRMSG_AFTERMAP "There should be ABSOLUTELY nothing after the map"

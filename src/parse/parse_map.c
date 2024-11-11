@@ -16,8 +16,7 @@ static void	set_player(t_player *player, int x, int y, char dir)
 	if (set_flag)
 		exit(put_err(ERRMSG_MULTIPLAYER));
 	set_flag = true;
-	player->pos.x = x + 0.5f;
-	player->pos.y = y + 0.5f;
+	player->pos = (t_vec2_d) {.x = x + 0.5, .y = y + 0.5};
 	if (dir == 'N')
 	{
 		player->dir = (t_vec2_d) {.x = 0, .y = -1};
@@ -81,14 +80,15 @@ void	parse_map(char **map, t_player *player, int fd)
 	char	*line;
 
 	line = get_next_line(fd);
+	player->pos.x = -1;
 	while (line)
 	{
 		parse_map_line(map, player, line);
 		free(line);
 		line = get_next_line(fd);
 	}
-	//printf("PARSED MAP:\n");
-	//put_map(map);
+	if (player->pos.x == -1)
+		exit(put_err(ERRMSG_NO_PLAYER));
 	map_check_closed(map, &player->pos);
 	if (close(fd) == -1)
 		exit(put_syserr(ERRMSG_MAP_CLOSE));
