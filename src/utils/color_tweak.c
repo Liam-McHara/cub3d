@@ -1,5 +1,5 @@
 // Tweaks the color to fix the endian-related bug in Linux systems. 
-int	color_tweak(int	color)
+int	color_tweak(int color)
 {
 	int	r;
 	int	g;

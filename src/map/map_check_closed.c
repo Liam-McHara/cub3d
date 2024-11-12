@@ -1,10 +1,6 @@
 #include "map.h"			// t_vec2_d, FLOOR
 #include "utils.h"			// p_malloc
 
-
-#include <stdio.h>
-#include <debug.h>
-
 static char	**map_duplicate(char **map)
 {
 	char	**dup_map;
@@ -44,7 +40,6 @@ static void	check_tile(char **map, int x, int y)
 
 static void	flood(char **map, int x, int y)
 {
-	//printf("Tile [%d, %d]: %d\n", x, y, map[y][x]);
 	check_tile(map, x, y);
 	if (map[y][x] == WALL)
 		return ;

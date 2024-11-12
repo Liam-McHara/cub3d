@@ -8,9 +8,9 @@ void	mini_draw(t_cub *c, int x, int y, int color)
 
 	x_max = x + 5;
 	y_max = y + 5;
-	while(y < y_max && (uint32_t)y < c->img->width)
+	while (y < y_max && (uint32_t)y < c->img->width)
 	{
-		while(x < x_max && (uint32_t)x < c->img->height)
+		while (x < x_max && (uint32_t)x < c->img->height)
 			mlx_put_pixel(c->img, x++, y, color);
 		x -= 5;
 		y++;
@@ -19,14 +19,14 @@ void	mini_draw(t_cub *c, int x, int y, int color)
 
 void	draw_mmap(t_cub *c)
 {
-    int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	y = 0;
-	while(c->map[y])
+	while (c->map[y])
 	{
 		x = 0;
-		while(c->map[y][x])
+		while (c->map[y][x])
 		{
 			if (c->map[y][x] == WALL)
 				mini_draw(c, x * 5, y * 5, MAP_WALL_COLOR);
