@@ -3,8 +3,6 @@
 #include <stdbool.h>		// true, false
 #include <unistd.h>			// close
 
-
-
 // Processes 'mapline' assuming it is the y-th row of the map.
 // It should make sure the are no invalid characters.
 static void	process_map_line(char **map, t_player *player, char *mapline, int y)
