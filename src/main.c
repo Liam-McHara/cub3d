@@ -2,9 +2,6 @@
 #include "parse.h"			// parse
 #include <stdlib.h>			// EXIT_SUCCESS
 
-
-#include <stdio.h>
-
 int	main(int ac, char **av)
 {
 	t_cub	c;
@@ -13,5 +10,6 @@ int	main(int ac, char **av)
 	cubfile = check_args(ac, av);
 	parse(cubfile, &c);
 	cub3d(&c);
+	map_free(c.map);
 	return (EXIT_SUCCESS);
 }

@@ -19,7 +19,7 @@ enum
 	VOID = ' '
 };
 
-//char	map_check(char **map, t_vec2_d *pos);	// TODO: deprecated --> remove
 void	map_check_closed(char **map, t_vec2_d *pos);
+void	map_free(char **map);
 
 #endif

@@ -5,6 +5,25 @@
 #include <stdio.h>
 #include <debug.h>
 
+static char	**map_duplicate(char **map)
+{
+	char	**dup_map;
+	int		i;
+
+	i = 0;
+	while (map[i])
+		++i;
+	dup_map = (char **)p_malloc(sizeof(char *) * (i + 1));
+	i = 0;
+	while (map[i])
+	{
+		dup_map[i] = ft_strdup(map[i]);
+		++i;
+	}
+	dup_map[i] = NULL;
+	return (dup_map);
+}
+
 // Checks a map tile. If the position is outside the map, or it's a floor
 // at the border, prints an error and exits gracefully.
 static void	check_tile(char **map, int x, int y)
@@ -41,20 +60,8 @@ static void	flood(char **map, int x, int y)
 void	map_check_closed(char **map, t_vec2_d *pos)
 {
 	char	**dup_map;
-	int		i;
 
-	i = 0;
-	while (map[i])
-		++i;
-	dup_map = (char **)p_malloc(sizeof(char *) * (i + 1));
-	i = 0;
-	while (map[i])
-	{
-		dup_map[i] = ft_strdup(map[i]);
-		++i;
-	}
-	dup_map[i] = NULL;
+	dup_map = map_duplicate(map);
 	flood(dup_map, (int)pos->x, (int) pos->y);
-	//printf("\nFLOODED MAP:\n");
-	//put_map(dup_map);
+	map_free(dup_map);
 }

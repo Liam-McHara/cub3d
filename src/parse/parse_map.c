@@ -68,8 +68,12 @@ static void	parse_map_line(char **map, t_player *player, const char *line)
 		map[i] = mapline;
 		++i;
 	}
-	else if (map_flag)
-		exit(put_err(ERRMSG_AFTERMAP));
+	else
+	{
+		free(mapline);
+		if (map_flag)
+			exit(put_err(ERRMSG_AFTERMAP));
+	}
 }
 
 // Reads from the given file descriptor, line to line, checking its structure

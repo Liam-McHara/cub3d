@@ -18,7 +18,8 @@ SRC			:= main.c \
 			debug/put_map.c \
 			check_args.c \
 			cub3d.c \
-			map_check_closed.c \
+			map/map_check_closed.c \
+			map/map_free.c \
 			minimap.c \
 			movements/move.c \
 			movements/move_dir.c \
@@ -67,7 +68,8 @@ OBJS		= $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 # Dependencies
 DEPDIR		= .dep/
 DEPS		= $(addprefix $(DEPDIR), $(SRC:.c=.d))
-DEPDIRS		= $(DEPDIR)movements/ \
+DEPDIRS		= $(DEPDIR)map/ \
+			$(DEPDIR)movements/ \
 			$(DEPDIR)parse/ \
 			$(DEPDIR)raycast/ \
 			$(DEPDIR)utils/ \
