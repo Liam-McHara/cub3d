@@ -43,8 +43,6 @@ static void	init_map(t_cub *cub)
 		cub->map[i] = NULL;
 }
 
-#include <stdio.h>
-
 // Loads the .cub file and parses its content, leaving the t_cub object
 // ready-to-use.
 // If any error is found, prints an error message and exits gracefully.
@@ -53,10 +51,7 @@ void	parse(const char *cubfile, t_cub *cub)
 	int		fd;
 
 	fd = open_cubfile(cubfile);
-	printf("parsing assets...\n");
 	parse_assets(&cub->assets, fd);
-	printf("done!\nparsing map...\n");
 	init_map(cub);
 	parse_map(cub->map, &cub->player, fd);
-	printf("done!\n");
 }

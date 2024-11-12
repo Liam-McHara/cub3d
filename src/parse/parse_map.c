@@ -1,42 +1,26 @@
+#include "parse_private.h"	// set_player	
 #include "utils.h"			// isinset, put_err, ft_strtrim, get_next_line ...
-#include "cub3d.h"
-#include "map.h"
 #include <stdbool.h>		// true, false
 #include <unistd.h>			// close
 
-#include <stdio.h>
-#include <debug.h>
-
-// Sets the 'player's position and direction.
-// If the player is already set, prints an error message and exits gracefully.
-static void	set_player(t_player *player, int x, int y, char dir)
+// Processes 'mapline' assuming it is the y-th row of the map.
+// It should make sure the are no invalid characters.
+static void	process_map_line(char **map, t_player *player, char *mapline, int y)
 {
-	static bool	set_flag = false;
+	int	x;
 
-	if (set_flag)
-		exit(put_err(ERRMSG_MULTIPLAYER));
-	set_flag = true;
-	player->pos = (t_vec2_d){.x = x + 0.5, .y = y + 0.5};
-	if (dir == 'N')
+	x = -1;
+	while (mapline[++x])
 	{
-		player->dir = (t_vec2_d){.x = 0, .y = -1};
-		player->plane = (t_vec2_d){.x = 0.66, .y = 0};
+		if (!isinset(mapline[y], " 10NSWE"))
+			exit(put_err(ERRMSG_MAP_CHAR));
+		if (isinset(mapline[x], "NSWE"))
+		{
+			set_player(player, x, y, mapline[x]);
+			mapline[x] = '0';
+		}
 	}
-	else if (dir == 'S')
-	{
-		player->dir = (t_vec2_d){.x = 0, .y = 1};
-		player->plane = (t_vec2_d){.x = -0.66, .y = 0};
-	}
-	else if (dir == 'E')
-	{
-		player->dir = (t_vec2_d){.x = 1, .y = 0};
-		player->plane = (t_vec2_d){.x = 0, .y = 0.66};
-	}
-	else if (dir == 'W')
-	{
-		player->dir = (t_vec2_d){.x = -1, .y = 0};
-		player->plane = (t_vec2_d){.x = 0, .y = -0.66};
-	}
+	map[y] = mapline;
 }
 
 // Parses 'line' as if part of the map, handling leading empty lines and
@@ -45,7 +29,6 @@ static void	parse_map_line(char **map, t_player *player, const char *line)
 {
 	static int	map_flag = false;
 	static int	i = 0;
-	int			j;
 	char		*mapline;
 
 	mapline = ft_strtrim(line, "\n");
@@ -53,18 +36,7 @@ static void	parse_map_line(char **map, t_player *player, const char *line)
 	{
 		if (!map_flag)
 			map_flag = true;
-		j = -1;
-		while (mapline[++j])
-		{
-			if (!isinset(mapline[j], " 10NSWE"))
-				exit(put_err(ERRMSG_MAP_CHAR));
-			if (isinset(mapline[j], "NSWE"))
-			{
-				set_player(player, j, i, mapline[j]);
-				mapline[j] = '0';
-			}
-		}
-		map[i] = mapline;
+		process_map_line(map, player, mapline, i);
 		++i;
 	}
 	else

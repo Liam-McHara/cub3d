@@ -29,6 +29,7 @@ SRC			:= main.c \
 			parse/parse_color.c \
 			parse/parse_map.c \
 			parse/parse_texture.c \
+			parse/set_player.c \
 			raycast/init_ray.c \
 			raycast/txt_draw.c \
 			raycast/txt_init.c \
