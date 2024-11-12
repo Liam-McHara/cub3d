@@ -6,7 +6,7 @@
 /*   By: eferre-m <eferre-m@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:55:43 by eferre-m          #+#    #+#             */
-/*   Updated: 2024/11/12 18:55:46 by eferre-m         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:41:59 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # define PLAYER_SPEED 4.0
 # define ROTATION_SPEED 2.0
 # define MOUSE_ROT_SPEED 0.2
-# define RADIUS 0.25
 
 typedef struct s_matrix
 {
