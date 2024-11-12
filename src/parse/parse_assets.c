@@ -14,17 +14,17 @@ static bool	parse_asset_line(t_assets *a, const char *asset_line)
 	line = ft_strtrim(asset_line, BLANK_CHARS);
 	if (ft_strlen(line) == 0)
 		return (free(line), false);
-	if (ft_strnstr(line, "NO ", 3))
+	if (!ft_strncmp(line, "NO ", 3))
 		parse_texture(a, line + 3, NORTH);
-	else if (ft_strnstr(line, "SO ", 3))
+	else if (!ft_strncmp(line, "SO ", 3))
 		parse_texture(a, line + 3, SOUTH);
-	else if (ft_strnstr(line, "WE ", 3))
+	else if (!ft_strncmp(line, "WE ", 3))
 		parse_texture(a, line + 3, WEST);
-	else if (ft_strnstr(line, "EA ", 3))
+	else if (!ft_strncmp(line, "EA ", 3))
 		parse_texture(a, line + 3, EAST);
-	else if (ft_strnstr(line, "F ", 2))
+	else if (!ft_strncmp(line, "F ", 2))
 		parse_color(a, line + 2, C_FLOOR);
-	else if (ft_strnstr(line, "C ", 2))
+	else if (!ft_strncmp(line, "C ", 2))
 		parse_color(a, line + 2, C_CEILING);
 	else
 		exit(put_err(ERRMSG_MAP_BAD));
