@@ -13,7 +13,7 @@
 #ifndef PLAYER_H
 # define PLAYER_H
 
-# include "vec2.h"		// t_vec2_d
+# include "vec2.h"
 
 typedef struct s_player
 {

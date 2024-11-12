@@ -13,9 +13,8 @@
 #ifndef PARSE_PRIVATE_H
 # define PARSE_PRIVATE_H
 
-# include "assets.h"			// t_assets
-# include "player.h"			// t_player
-# include "map.h"				// t_map, t_direction
+# include "assets.h"
+# include "player.h"
 
 typedef enum e_color_type
 {
