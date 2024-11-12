@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: glajara- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 19:17:52 by glajara-          #+#    #+#             */
+/*   Updated: 2024/11/12 19:17:52 by glajara-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef UTILS_H
 # define UTILS_H
 
@@ -13,7 +25,7 @@
 # endif
 # define BLANK_CHARS " \f\n\r\t\v"
 
-int		color_tweak(int	color);
+int		color_tweak(int color);
 int		ft_atoi(const char *str);
 bool	ft_isalnum(char c);
 bool	ft_isnumber(char c);
