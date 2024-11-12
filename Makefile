@@ -15,7 +15,6 @@ LIBS		:= $(MLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 # Sources
 SRC			:= main.c \
-			debug/put_map.c \
 			check_args.c \
 			cub3d.c \
 			map/map_check_closed.c \
