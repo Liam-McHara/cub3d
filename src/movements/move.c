@@ -24,4 +24,3 @@ void	upd_player_pos(t_cub *c, int key)
 	player_move_pos(c, key, &new_pos);
 	check_collisions(p, new_pos, c->map);
 }
-

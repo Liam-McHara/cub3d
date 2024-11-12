@@ -16,26 +16,26 @@ static void	set_player(t_player *player, int x, int y, char dir)
 	if (set_flag)
 		exit(put_err(ERRMSG_MULTIPLAYER));
 	set_flag = true;
-	player->pos = (t_vec2_d) {.x = x + 0.5, .y = y + 0.5};
+	player->pos = (t_vec2_d){.x = x + 0.5, .y = y + 0.5};
 	if (dir == 'N')
 	{
-		player->dir = (t_vec2_d) {.x = 0, .y = -1};
-		player->plane = (t_vec2_d) {.x = 0.66, .y = 0};
+		player->dir = (t_vec2_d){.x = 0, .y = -1};
+		player->plane = (t_vec2_d){.x = 0.66, .y = 0};
 	}
 	else if (dir == 'S')
 	{
-		player->dir = (t_vec2_d) {.x = 0, .y = 1};
-		player->plane = (t_vec2_d) {.x = -0.66, .y = 0};
+		player->dir = (t_vec2_d){.x = 0, .y = 1};
+		player->plane = (t_vec2_d){.x = -0.66, .y = 0};
 	}
 	else if (dir == 'E')
 	{
-		player->dir = (t_vec2_d) {.x = 1, .y = 0};
-		player->plane = (t_vec2_d) {.x = 0, .y = 0.66};
+		player->dir = (t_vec2_d){.x = 1, .y = 0};
+		player->plane = (t_vec2_d){.x = 0, .y = 0.66};
 	}
 	else if (dir == 'W')
 	{
-		player->dir = (t_vec2_d) {.x = -1, .y = 0};
-		player->plane = (t_vec2_d) {.x = 0, .y = -0.66};
+		player->dir = (t_vec2_d){.x = -1, .y = 0};
+		player->plane = (t_vec2_d){.x = 0, .y = -0.66};
 	}
 }
 
@@ -44,7 +44,7 @@ static void	set_player(t_player *player, int x, int y, char dir)
 static void	parse_map_line(char **map, t_player *player, const char *line)
 {
 	static int	map_flag = false;
-	static 		int	i = 0;
+	static int	i = 0;
 	int			j;
 	char		*mapline;
 
@@ -53,8 +53,8 @@ static void	parse_map_line(char **map, t_player *player, const char *line)
 	{
 		if (!map_flag)
 			map_flag = true;
-		j = 0;
-		while (mapline[j])
+		j = -1;
+		while (mapline[++j])
 		{
 			if (!isinset(mapline[j], " 10NSWE"))
 				exit(put_err(ERRMSG_MAP_CHAR));
@@ -63,7 +63,6 @@ static void	parse_map_line(char **map, t_player *player, const char *line)
 				set_player(player, j, i, mapline[j]);
 				mapline[j] = '0';
 			}
-			++j;
 		}
 		map[i] = mapline;
 		++i;

@@ -67,7 +67,7 @@ void	parse_texture(t_assets *a, const char *str, t_direction dir)
 		exit(put_mlxerr(texture_path));
 	if (texture->height != TEXTURE_HEIGHT || texture->width != TEXTURE_WIDTH)
 		exit(put_err(ERRMSG_PNG_SIZE));
-	free(texture_path);  
+	free(texture_path);
 	if (dir == NORTH)
 		set_north_texture(a, texture);
 	else if (dir == SOUTH)
