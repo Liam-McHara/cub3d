@@ -3,6 +3,8 @@
 #include <stdbool.h>		// true, false
 #include <unistd.h>			// close
 
+
+
 // Processes 'mapline' assuming it is the y-th row of the map.
 // It should make sure the are no invalid characters.
 static void	process_map_line(char **map, t_player *player, char *mapline, int y)
@@ -12,7 +14,7 @@ static void	process_map_line(char **map, t_player *player, char *mapline, int y)
 	x = -1;
 	while (mapline[++x])
 	{
-		if (!isinset(mapline[y], " 10NSWE"))
+		if (!isinset(mapline[x], " 10NSWE"))
 			exit(put_err(ERRMSG_MAP_CHAR));
 		if (isinset(mapline[x], "NSWE"))
 		{

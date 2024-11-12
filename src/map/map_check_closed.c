@@ -34,7 +34,7 @@ static void	check_tile(char **map, int x, int y)
 	if (i != x)
 		exit(put_err(ERRMSG_MAP_BAD));
 	if (map[y][x] == FLOOR)
-		if (x == 0 || !map[y + 1] || y == 0 || !map[y][x + 1])
+		if (y == 0 || !map[y + 1] || x == 0 || !map[y][x + 1])
 			exit(put_err(ERRMSG_MAP_BAD));
 }
 
@@ -48,6 +48,10 @@ static void	flood(char **map, int x, int y)
 	flood(map, x - 1, y);
 	flood(map, x, y + 1);
 	flood(map, x, y - 1);
+	flood(map, x - 1, y - 1);
+	flood(map, x - 1, y + 1);
+	flood(map, x + 1, y - 1);
+	flood(map, x + 1, y + 1);
 }
 
 // Given a starting position, returns true if the 'map' is closed using the
