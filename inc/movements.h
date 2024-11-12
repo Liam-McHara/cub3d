@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	MOVEMENTS_H
+#ifndef MOVEMENTS_H
 # define MOVEMENTS_H
 
 # include <math.h>

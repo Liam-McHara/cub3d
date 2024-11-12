@@ -28,6 +28,6 @@ typedef struct s_texture_d
 	double		txt_pos;
 }	t_texture_d;
 
-void init_data_txt(t_raycast *r, t_cub *c, t_texture_d *txt_data);
+void	init_data_txt(t_raycast *r, t_cub *c, t_texture_d *txt_data);
 
 #endif

@@ -20,6 +20,6 @@
 # define MAP_W_COLOR 0xFFFFFFFF
 # define MAP_PXL_SIZE 6
 
-void    minimap(t_cub *c);
+void	minimap(t_cub *c);
 
 #endif
