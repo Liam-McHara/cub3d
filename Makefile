@@ -75,7 +75,6 @@ DEPDIRS		= $(DEPDIR)map/ \
 			$(DEPDIR)utils/ \
 			$(DEPDIR)debug/ \
 
-
 # Colors
 WHITE		= \033[0;37m
 GREEN		= \033[0;32m
@@ -140,4 +139,3 @@ bonus:	all
 -include $(DEPS)
 
 .PHONY: all, clean, fclean, re, mlx, mlxclean, norm, bonus
-
