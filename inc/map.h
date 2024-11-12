@@ -1,8 +1,7 @@
 #ifndef MAP_H
 # define MAP_H
 
-# include "vec2.h"				// t_vec2_d
-# include <stdbool.h>			// bool
+# include "vec2.h"
 
 typedef enum e_direction
 {

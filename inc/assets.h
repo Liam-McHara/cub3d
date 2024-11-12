@@ -1,8 +1,7 @@
 #ifndef ASSETS_H
 # define ASSETS_H
 
-# include "MLX42.h"			// mlx_t, mlx_texture_t, mlx_image_t
-# include <stdbool.h>		// true, false
+# include "MLX42.h"
 
 typedef struct s_assets
 {

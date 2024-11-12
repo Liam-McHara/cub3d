@@ -1,7 +1,7 @@
 #ifndef PARSE_H
 # define PARSE_H
 
-# include "cub3d.h"			// t_cub
+# include "cub3d.h"
 
 # ifndef MAX_WIDTH
 #  define MAX_WIDTH 1024
