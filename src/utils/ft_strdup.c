@@ -1,7 +1,7 @@
 #include "utils.h"			// p_malloc, ft_strlen
 
 // Returns a pointer to a new string which is a duplicate of the string s.
-char *ft_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	char	*s2;
 	size_t	len;

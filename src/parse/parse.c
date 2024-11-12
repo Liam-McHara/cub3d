@@ -33,7 +33,7 @@ static int	open_cubfile(const char *cubfile)
 }
 
 // Allocates memory needed to store the map.
-static void init_map(t_cub *cub)
+static void	init_map(t_cub *cub)
 {
 	int	i;
 

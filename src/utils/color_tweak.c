@@ -2,8 +2,8 @@
 int	color_tweak(int	color)
 {
 	int	r;
-	int g;
-	int b;
+	int	g;
+	int	b;
 	int	new_color;
 
 	r = color & 0xFF;
