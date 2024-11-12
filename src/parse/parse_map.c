@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: glajara- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 18:53:00 by glajara-          #+#    #+#             */
+/*   Updated: 2024/11/12 18:53:01 by glajara-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parse_private.h"	// set_player	
 #include "utils.h"			// isinset, put_err, ft_strtrim, get_next_line ...
 #include <stdbool.h>		// true, false

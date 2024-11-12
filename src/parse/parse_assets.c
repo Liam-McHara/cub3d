@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_assets.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: glajara- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 18:52:43 by glajara-          #+#    #+#             */
+/*   Updated: 2024/11/12 18:52:44 by glajara-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "assets.h"				// t_assets
 #include "parse_private.h"		// parse_color, parse_texture, NORTH_T ... 
 #include "utils.h"				// ft_strtrim, ft_strlen, get_next_line ...
