@@ -99,7 +99,7 @@ $(OBJDIR)/%.o:	$(SRCDIR)/%.c Makefile
 			@mkdir -p $(DEPDIR) $(DEPDIRS)
 			@mv $(patsubst %.o,%.d,$@) $(subst $(OBJDIR),$(DEPDIR),$(@D))/
 
-$(NAME)::	$(OBJS) Makefile
+$(NAME)::	$(OBJS)
 			@$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(INCFLAGS) -o $(NAME)
 			@echo "$(GREEN)[ $(BGREEN)$(NAME) $(GREEN)created! ]$(DEFAULT)"
 
@@ -136,7 +136,9 @@ re: clean all
 norm:
 	@norminette $(SRCS) inc
 
+bonus:	all
+
 -include $(DEPS)
 
-.PHONY: all, clean, fclean, re, mlx, mlxclean, norm
+.PHONY: all, clean, fclean, re, mlx, mlxclean, norm, bonus
 
