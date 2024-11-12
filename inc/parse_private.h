@@ -6,7 +6,7 @@
 /*   By: glajara- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 19:18:47 by glajara-          #+#    #+#             */
-/*   Updated: 2024/11/12 19:18:47 by glajara-         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:26:14 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "assets.h"
 # include "player.h"
+# include "map.h"		// t_direction
 
 typedef enum e_color_type
 {
