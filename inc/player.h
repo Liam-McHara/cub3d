@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eferre-m <eferre-m@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 18:56:09 by eferre-m          #+#    #+#             */
+/*   Updated: 2024/11/12 18:56:50 by eferre-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PLAYER_H
 # define PLAYER_H
 
@@ -5,13 +17,9 @@
 
 typedef struct s_player
 {
-	t_vec2_d	pos;	// REMEMBER: add 0.5f to x & y
+	t_vec2_d	pos;
 	t_vec2_d	dir;
-	t_vec2_d	plane;	// TODO: Make constant ??
-	double		time;
-	double		oldtime;
-	double		frametime;
-	int			angle;
+	t_vec2_d	plane;
 }	t_player;
 
 #endif
